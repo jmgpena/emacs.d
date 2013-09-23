@@ -39,10 +39,10 @@ First thing to do is to use el-get (installed manually via git submodule)
   configuration from within that subtree will be loaded.  If it is
   not an id then it will be interpreted as a tag, and only subtrees
   marked with the given tag will be loaded.
-  
+
   For example, to load all of ome-lisp.org simply
   add (jgp-load \"lisp\") to your configuration.
-  
+
   To load only the 'window-system' config from
   jgp-misc-recommended.org add
    (jgp-load \"misc-recommended\" \"window-system\")
@@ -88,6 +88,7 @@ First thing to do is to use el-get (installed manually via git submodule)
 #+BEGIN_SRC emacs-lisp
   (jgp-load "gui")
   (jgp-load "basic")
+  (jgp-load "prog")
 #+END_SRC
 
 ** El-get sync packages
