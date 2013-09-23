@@ -39,10 +39,10 @@ First thing to do is to use el-get (installed manually via git submodule)
   configuration from within that subtree will be loaded.  If it is
   not an id then it will be interpreted as a tag, and only subtrees
   marked with the given tag will be loaded.
-
+  
   For example, to load all of ome-lisp.org simply
   add (jgp-load \"lisp\") to your configuration.
-
+  
   To load only the 'window-system' config from
   jgp-misc-recommended.org add
    (jgp-load \"misc-recommended\" \"window-system\")
@@ -51,8 +51,6 @@ First thing to do is to use el-get (installed manually via git submodule)
                                       file
                                     (format "jgp-%s.org" file))
                                   init-dir)))
-      ;; ensure el-get-sources is empty before loading "jgp-.+\.org" files
-      (setq el-get-sources nil)
       (org-babel-load-file
        (if header-or-tag
            (let* ((base (file-name-nondirectory file))
@@ -82,8 +80,7 @@ First thing to do is to use el-get (installed manually via git submodule)
                             header-or-tag)
                            body))))))))
              partial-file)
-         file))
-      (el-get 'sync (mapcar 'el-get-source-name el-get-sources))))
+         file))))
 #+END_SRC
 
 ** Modules to load
@@ -91,4 +88,11 @@ First thing to do is to use el-get (installed manually via git submodule)
 #+BEGIN_SRC emacs-lisp
   (jgp-load "gui")
   (jgp-load "basic")
+#+END_SRC
+
+** El-get sync packages
+
+#+BEGIN_SRC emacs-lisp
+  (setq jgp:el-get-packages (mapcar 'el-get-source-name el-get-sources))
+  (el-get 'sync jgp:el-get-packages)
 #+END_SRC
