@@ -1,16 +1,15 @@
 ;;; init.el --- emacs initialization
+;; Show debugger on error
+(setq debug-on-error t)
 
 ;; Setup proxy if it exists
 (require 'url)
 (let ((proxy (url-generic-parse-url (getenv "HTTP_PROXY"))))
-  (unless (string= "" (url-host proxy))
+  (when (stringp (url-host proxy))
     (setq url-proxy-services
 	  `(("http" . ,(concat (url-host proxy) ":" (number-to-string (url-port proxy))))
 	    ("https" . ,(concat (url-host proxy) ":"  (number-to-string (url-port proxy))))
 	    ("ftp" . ,(concat (url-host proxy) ":" (number-to-string (url-port proxy))))))))
-
-;; Debug
-(setq debug-on-error t)
 
 ;; load the ome from the `after-init-hook' so all packages are loaded
 (add-hook 'after-init-hook
