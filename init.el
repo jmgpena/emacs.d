@@ -7,11 +7,17 @@
 (let ((proxy (url-generic-parse-url (getenv "HTTP_PROXY"))))
   (when (stringp (url-host proxy))
     (setq url-proxy-services
-	  `(("http" . ,(concat (url-host proxy) ":" (number-to-string (url-port proxy))))
-	    ("https" . ,(concat (url-host proxy) ":"  (number-to-string (url-port proxy))))
-	    ("ftp" . ,(concat (url-host proxy) ":" (number-to-string (url-port proxy))))))))
+          `(("http" . ,(concat (url-host proxy)
+                               ":"
+                               (number-to-string (url-port proxy))))
+            ("https" . ,(concat (url-host proxy)
+                                ":"
+                                (number-to-string (url-port proxy))))
+            ("ftp" . ,(concat (url-host proxy)
+                              ":"
+                              (number-to-string (url-port proxy))))))))
 
-;; load the ome from the `after-init-hook' so all packages are loaded
+;; load the main config from the `after-init-hook' so all packages are loaded
 (add-hook 'after-init-hook
  `(lambda ()
     ;; remember this directory
