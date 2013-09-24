@@ -1,3 +1,5 @@
+;; memory config - increase gc threshold to 20MB
+(setq gc-cons-threshold 20000000)
 ;; locale settings and coding
 (setq system-time-locale "C")
 (prefer-coding-system 'utf-8-unix)
@@ -128,3 +130,6 @@ point reaches the beginning or end of the buffer, stop there."
 ;; use aspell instead of ispell
 (setq ispell-program-name "aspell"
       ispell-extra-args '("--sug-mode=ultra"))
+
+;; jump dired
+(require 'dired-x)
