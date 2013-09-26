@@ -49,13 +49,6 @@
 ;; as C mode.
 (setq-default major-mode 'text-mode)
 
-;;; ido-mode
-(setq ido-enable-prefix nil)
-(setq ido-enable-case nil)
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
-(ido-mode t)
-
 ;; use icomplete in minibuffer
 (icomplete-mode t)
 

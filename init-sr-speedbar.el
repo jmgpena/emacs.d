@@ -1,4 +1,7 @@
-;; speedbar config
+;;; init-sr-speedbar.el --- speedbar config
+;;; commentary:
+
+;;; code:
 (require 'sr-speedbar)
 
 (setq speedbar-hide-button-brackets-flag nil
@@ -16,6 +19,9 @@
       sr-speedbar-right-side nil)
 
 ;; keybindings
+(global-set-key (kbd "s-t") 'sr-speedbar-toggle)
 (define-key speedbar-mode-map [S-up] 'speedbar-up-directory)
 (define-key speedbar-mode-map [right] 'speedbar-flush-expand-line)
 (define-key speedbar-mode-map [left] 'speedbar-contract-line)
+
+;;; init-sr-speedbar ends here
