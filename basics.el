@@ -1,3 +1,9 @@
+;;; basics.el --- emacs basics
+;;; commentary:
+;;;
+
+;;; code:
+
 ;; memory config - increase gc threshold to 20MB
 (setq gc-cons-threshold 20000000)
 ;; locale settings and coding
@@ -50,7 +56,7 @@
 (setq-default major-mode 'text-mode)
 
 ;; use icomplete in minibuffer
-(icomplete-mode t)
+;;(icomplete-mode t)
 
 ;; delete the selection with a keypress
 (delete-selection-mode t)
@@ -91,10 +97,12 @@ point reaches the beginning or end of the buffer, stop there."
 (setq auto-save-file-name-transforms
       `((".*" ,temporary-file-directory t)))
 
+;;; save last point in files
+(require 'saveplace)
 (setq-default save-place t)
 (setq save-place-file (concat user-emacs-directory "saved-places"))
-(require 'saveplace)
 
+;;; recent files
 (require 'recentf)
 
 ;; get rid of `find-file-read-only' and replace it with something
@@ -126,3 +134,22 @@ point reaches the beginning or end of the buffer, stop there."
 
 ;; jump dired
 (require 'dired-x)
+
+;;; save desktop on exit
+(desktop-save-mode 1)
+
+;;; global keyboard changes (from better defaults package)
+;;; and other sources
+(global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "C-x C-b") 'ibuffer)
+
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+(global-set-key (kbd "C-r") 'isearch-backward-regexp)
+(global-set-key (kbd "C-M-s") 'isearch-forward)
+(global-set-key (kbd "C-M-r") 'isearch-backward)
+
+;; don't quit that easily
+(global-set-key (kbd "C-x r q") 'save-buffers-kill-terminal)
+(global-set-key (kbd "C-x C-c") 'delete-frame)
+
+;;; basics.el ends here

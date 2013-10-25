@@ -82,6 +82,7 @@
                 (:name php-mode)
                 (:name web-mode)
                 (:name sass-mode)
+                (:name js2-mode)
                 )
               )
 

@@ -1,3 +1,8 @@
+;;; gui.el --- emacs init gui settings
+;;; commentary:
+;;;
+
+;;; code:
 
 ;; believe me, you don't need menubar, toolbar nor scrollbar
 (dolist (mode '( tool-bar-mode scroll-bar-mode))
@@ -43,3 +48,22 @@
 (if (member config:font-family (font-family-list))
     (set-face-attribute
      'default nil :font (concat config:font-family " " config:font-size)))
+
+;;; nice defaults
+(setq   ;x-select-enable-clipboard t
+        ;x-select-enable-primary t
+        ;save-interprogram-paste-before-kill t
+        apropos-do-all t
+        mouse-yank-at-point t)
+
+;;; scrolling behaviour
+(setq redisplay-dont-pause t
+      scroll-margin 1
+      scroll-step 1
+      scroll-conservatively 10000
+      scroll-preserve-screen-position 1)
+; mouse wheel scrolling
+(setq mouse-wheel-follow-mouse 't)
+(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
+
+;;; gui.el ends here

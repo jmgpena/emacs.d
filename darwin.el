@@ -4,7 +4,6 @@
 
 ;; todo vars to config
 (setenv "TMPDIR" "/tmp")
-(setq mac-command-modifier 'super)
 (setq mac-option-modifier 'meta)
 (setq mac-right-option-modifier 'none)
 (setq ns-function-modifier 'hyper)
