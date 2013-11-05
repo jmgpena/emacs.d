@@ -21,9 +21,9 @@
 ;; make the fringe thinner (default is 8 in pixels)
 (fringe-mode 4)
 
-;; show parenthesis match
-(show-paren-mode 1)
-(setq show-paren-style 'expression)
+;; show parenthesis match (replaced by smartparens)
+;;(show-paren-mode 1)
+;;(setq show-paren-style 'expression)
 
 ;; Toggle line highlighting in all buffers
 (global-hl-line-mode t)

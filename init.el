@@ -22,6 +22,11 @@
                               ":"
                               (number-to-string (url-port proxy))))))))
 
+;; Set path to elisp dependencies
+(setq site-lisp-dir
+      (expand-file-name "site-lisp" user-emacs-directory))
+(add-to-list 'load-path user-emacs-directory)
+(add-to-list 'load-path site-lisp-dir)
 
 ;; load system specific config settings
 (defvar config:sysinit-file
@@ -33,27 +38,57 @@
 (setq user-full-name "Jorge Pena"
       user-mail-address "jorge@jmgpena.net")
 
+;; Keep emacs Custom-settings in separate file
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file)
+
+;; Add external projects to load path
+(dolist (project (directory-files site-lisp-dir t "\\w+"))
+  (when (file-directory-p project)
+    (add-to-list 'load-path project)))
+
 ;; load split config files
 (load "~/.emacs.d/gui")
 (load "~/.emacs.d/basics")
 (load "~/.emacs.d/prog")
 
-;; load el-get
-(require 'package)
-(package-initialize)
-(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-(setq-default el-get-user-package-directory "~/.emacs.d/")
+;; Setup packages
+(require 'init-package)
 
-(unless (require 'el-get nil 'noerror)
-  (with-current-buffer
-      (url-retrieve-synchronously
-       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-    (let (el-get-master-branch)
-      (goto-char (point-max))
-      (eval-print-last-sexp))))
+;; load el-get
 
 ;; local package list
-(defvar el-get-sources)
+(defun init--install-packages ()
+  (packages-install
+   '(magit
+     org-plus-contrib
+     ;;paredit
+     ;;move-text
+     ;;god-mode
+     ;;gist
+     htmlize
+     visual-regexp
+     flycheck
+     flx
+     flx-ido
+     css-eldoc
+     yasnippet
+     smartparens
+     ido-vertical-mode
+     ido-at-point
+     ;;simple-httpd
+     guide-key
+     nodejs-repl
+     restclient
+     highlight-escape-sequences
+     whitespace-cleanup-mode
+     elisp-slime-nav
+     git-commit-mode
+     gitconfig-mode
+     gitignore-mode
+     clojure-mode
+     nrepl)))
+
 (setq el-get-sources
               '(
                 ;; basic packages
@@ -61,8 +96,16 @@
                 (:name org-plus-contrib
                        :type elpa
                        :repo ("org" . "http://orgmode.org/elpa/"))
-                (:name ido-ubiquitous)
+                (:name ido-ubiquitous
+                       :type elpa
+                       :repo ("marmalade" . "http://marmalade-repo.org/packages/"))
                 (:name flx)
+                (:name ido-vertical-mode)
+                (:name guide-key
+                       type: github
+                       pkgname "kbkbkbkb1/guide-key"
+                       description "guide-key.el enables to guide the following
+                                    key bindings automatically and dynamically")
                 (:name rainbow-mode)
                 ;; GUI packages
                 (:name solarized-emacs
@@ -79,10 +122,14 @@
                 (:name flycheck)
                 (:name helm)
                 (:name projectile)
+                (:name perspective)
                 (:name php-mode)
                 (:name web-mode)
                 (:name sass-mode)
                 (:name js2-mode)
+                (:name jade-mode
+                       :type github
+                       :pkgname "brianc/jade-mode")
                 )
               )
 
