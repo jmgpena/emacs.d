@@ -1,4 +1,6 @@
 ;; org-mode configuration
+(require-package 'org-plus-contrib)
+
 (require 'org-habit)
 (require 'org-special-blocks)
 
@@ -181,3 +183,5 @@
       '("pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
         "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
         "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
+
+(provide 'init-org-plus-contrib)

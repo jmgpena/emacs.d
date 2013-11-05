@@ -47,6 +47,9 @@
   (when (file-directory-p project)
     (add-to-list 'load-path project)))
 
+;; Load solarized theme
+(require 'init-solarized-emacs)
+
 ;; load split config files
 (load "~/.emacs.d/gui")
 (load "~/.emacs.d/basics")
@@ -55,52 +58,48 @@
 ;; Setup packages
 (require 'init-package)
 
-;; load el-get
+;; load packages and configs
+(require 'init-magit)
+(require 'init-org-plus-contrib)
+(require-package 'htmlize)
+(require-package 'move-text)
+(require 'init-flycheck)
+(require 'init-ido)
+(require 'init-yasnippet)
+(require 'init-smartparens)
+(require-package 'nodejs-repl)
+(require-package 'highlight-escape-sequences)
+;; Javascript
+(require-package 'js2-mode)
+(autoload 'js2-mode "js2-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
+(add-to-list 'auto-mode-alist '("\\.jshintrc$" . javascript-mode))
+(add-to-list 'magic-mode-alist '("#!/usr/bin/env node" . js2-mode))
+(eval-after-load 'js2-mode '(require 'init-js2-mode))
+
+;; restclient
+(require-package 'restclient)
+(add-to-list 'auto-mode-alist '("\\.restclient$" . restclient-mode))
+;; guide-key
+(require-package 'guide-key)
+(setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x v" "C-x 8"))
+(guide-key-mode 1)
 
 ;; local package list
-(defun init--install-packages ()
-  (packages-install
-   '(magit
-     org-plus-contrib
-     ;;paredit
-     ;;move-text
-     ;;god-mode
-     ;;gist
-     htmlize
-     visual-regexp
-     flycheck
-     flx
-     flx-ido
-     css-eldoc
-     yasnippet
-     smartparens
-     ido-vertical-mode
-     ido-at-point
-     ;;simple-httpd
-     guide-key
-     nodejs-repl
-     restclient
-     highlight-escape-sequences
-     whitespace-cleanup-mode
-     elisp-slime-nav
-     git-commit-mode
-     gitconfig-mode
-     gitignore-mode
-     clojure-mode
-     nrepl
-     ido-ubiquitous
-     rainbow-mode
-     rainbow-delimiters
-     projectile
-     perspective
-     php-mode
-     web-mode
-     sass-mode
-     js2-mode
-     )))
-
-
- ;;                      :prepare (add-to-list 'custom-theme-load-path
- ;;                                            default-
+     ;; whitespace-cleanup-mode
+     ;; elisp-slime-nav
+     ;; git-commit-mode
+     ;; gitconfig-mode
+     ;; gitignore-mode
+     ;; clojure-mode
+     ;; nrepl
+     ;; rainbow-mode
+     ;; rainbow-delimiters
+     ;; projectile
+     ;; perspective
+     ;; php-mode
+     ;; web-mode
+     ;; sass-mode
+     ;; js2-mode
 
 ;;; init.el ends here

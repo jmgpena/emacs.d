@@ -1,4 +1,7 @@
-(setq solarized-broken-srgb nil)
+(add-to-list 'custom-theme-load-path
+	     (expand-file-name "solarized-emacs" site-lisp-dir))
+
+;;(setq solarized-broken-srgb nil)
 
 (setq solarized-distinct-fringe-background t)
 (setq solarized-high-contrast-mode-line t)
@@ -15,3 +18,5 @@
 ;;           '(lambda (f)
 ;;              (with-selected-frame f
 ;;                (when (window-system) (load-theme 'solarized-dark t)))))
+
+(provide 'init-solarized-emacs)
