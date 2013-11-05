@@ -87,59 +87,20 @@
      gitconfig-mode
      gitignore-mode
      clojure-mode
-     nrepl)))
+     nrepl
+     ido-ubiquitous
+     rainbow-mode
+     rainbow-delimiters
+     projectile
+     perspective
+     php-mode
+     web-mode
+     sass-mode
+     js2-mode
+     )))
 
-(setq el-get-sources
-              '(
-                ;; basic packages
-                (:name el-get)
-                (:name org-plus-contrib
-                       :type elpa
-                       :repo ("org" . "http://orgmode.org/elpa/"))
-                (:name ido-ubiquitous
-                       :type elpa
-                       :repo ("marmalade" . "http://marmalade-repo.org/packages/"))
-                (:name flx)
-                (:name ido-vertical-mode)
-                (:name guide-key
-                       type: github
-                       pkgname "kbkbkbkb1/guide-key"
-                       description "guide-key.el enables to guide the following
-                                    key bindings automatically and dynamically")
-                (:name rainbow-mode)
-                ;; GUI packages
-                (:name solarized-emacs
-                       :type github
-                       :pkgname "bbatsov/solarized-emacs"
-                       :description "Solarized themes for Emacs"
-                       :prepare (add-to-list 'custom-theme-load-path
-                                             default-directory))
-                (:name sr-speedbar)
-                ;; programming
-                (:name magit)
-                (:name smartparens)
-                (:name rainbow-delimiters)
-                (:name flycheck)
-                (:name helm)
-                (:name projectile)
-                (:name perspective)
-                (:name php-mode)
-                (:name web-mode)
-                (:name sass-mode)
-                (:name js2-mode)
-                (:name jade-mode
-                       :type github
-                       :pkgname "brianc/jade-mode")
-                )
-              )
 
-;; load and initialize packages
-(el-get 'sync (mapcar 'el-get-source-name el-get-sources))
-
-;; load the main config from the `after-init-hook' so all packages are loaded
-(add-hook 'after-init-hook
- `(lambda ()
-    ;; remember this directory
-        ))
+ ;;                      :prepare (add-to-list 'custom-theme-load-path
+ ;;                                            default-
 
 ;;; init.el ends here
