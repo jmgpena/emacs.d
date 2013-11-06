@@ -5,3 +5,10 @@ saved-places
 *.elc
 elpa
 *~
+/.emacs.desktop
+/.emacs.desktop.lock
+/.ido.last
+/projectile-bookmarks.eld
+/projectile.cache
+/tramp
+/url/cookies

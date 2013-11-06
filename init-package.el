@@ -1,13 +1,18 @@
+;;; init-package --- setup package settings and helper functions
+;;; Commentary:
+
 (require 'package)
 (require 'dash)
+
+;;; Code:
 
 ;; Add melpa to package repos
 (add-to-list 'package-archives
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives 
-	     '("org" . "http://orgmode.org/elpa/") t)
 (add-to-list 'package-archives
-	     '("marmalade" . "http://marmalade-repo.org/packages/") t)
+             '("org" . "http://orgmode.org/elpa/") t)
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/") t)
 
 (package-initialize)
 
@@ -38,3 +43,4 @@ re-downloaded in order to locate PACKAGE."
         (require-package package min-version t)))))
 
 (provide 'init-package)
+;;; init-package.el ends here

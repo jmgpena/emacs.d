@@ -69,6 +69,11 @@
 (require 'init-smartparens)
 (require-package 'nodejs-repl)
 (require-package 'highlight-escape-sequences)
+(require-package 'perspective)
+(persp-mode t)
+(require 'init-projectile)
+(require 'init-php)
+(require 'web-mode)
 ;; Javascript
 (require-package 'js2-mode)
 (autoload 'js2-mode "js2-mode" nil t)
@@ -82,7 +87,8 @@
 (add-to-list 'auto-mode-alist '("\\.restclient$" . restclient-mode))
 ;; guide-key
 (require-package 'guide-key)
-(setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x v" "C-x 8"))
+(setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x v" "C-x 8" "C-x x"
+                                     "C-c p"))
 (guide-key-mode 1)
 
 ;; local package list
