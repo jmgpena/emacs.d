@@ -73,7 +73,8 @@
 (persp-mode t)
 (require 'init-projectile)
 (require 'init-php)
-(require 'web-mode)
+(require 'init-web-mode)
+(require 'init-multiple-cursors)
 ;; Javascript
 (require-package 'js2-mode)
 (autoload 'js2-mode "js2-mode" nil t)

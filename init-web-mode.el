@@ -21,9 +21,9 @@
           (lambda ()
             (whitespace-mode -1)
             ;; Customizations
-            (setq web-mode-markup-indent-offset 4)
+            (setq web-mode-markup-indent-offset 2sm)
             (setq web-mode-css-indent-offset 2)
-            (setq web-mode-code-indent-offset 4)
+            (setq web-mode-code-indent-offset 2)
             (setq web-mode-disable-autocompletion t)
             (local-set-key (kbd "RET") 'newline-and-indent)
             (imenu-add-menubar-index))
