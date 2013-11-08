@@ -3,7 +3,8 @@
 ;;;
 
 ;;; code:
-
+;; set the default directory
+(setq default-directory "~/")
 ;; memory config - increase gc threshold to 20MB
 (setq gc-cons-threshold 20000000)
 ;; locale settings and coding

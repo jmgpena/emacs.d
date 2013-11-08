@@ -1,8 +1,6 @@
 ;;; init.el --- emacs initialization
-;;; commentary:
-;;;
-
-;;; code:
+;;; Commentary:
+;;; Code:
 
 ;; Show debugger on error
 (setq debug-on-error t)
