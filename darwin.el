@@ -9,6 +9,7 @@
 (setq mac-right-option-modifier 'none)
 (setq ns-function-modifier 'hyper)
 (setq mac-allow-anti-aliasing t)
+(setq mac-control-modifier 'none)
 
 ;; This sets the Emacs "PATH" environment variable and the `exec-path`
 ;; variable to the same value your login shell sees. The reason this
@@ -20,7 +21,7 @@
 ;; a .plist file rather than the shell environment.
 
 (defun set-exec-path-from-shell-PATH ()
-  "Sets the exec-path to the same value used by the user shell"
+  "Set the 'exec-path' to the same value used by the user shell."
   (let ((path-from-shell
          (replace-regexp-in-string
           "[[:space:]\n]*$" ""
