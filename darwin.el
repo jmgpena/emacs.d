@@ -5,6 +5,7 @@
 ;; todo vars to config
 (setenv "TMPDIR" "/tmp")
 (setq mac-option-modifier 'meta)
+(setq mac-command-modifier 'control)
 (setq mac-right-option-modifier 'none)
 (setq ns-function-modifier 'hyper)
 (setq mac-allow-anti-aliasing t)
