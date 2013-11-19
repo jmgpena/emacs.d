@@ -163,4 +163,7 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key (kbd "C-x r q") 'save-buffers-kill-terminal)
 (global-set-key (kbd "C-x C-c") 'delete-frame)
 
+;; imenu
+(global-set-key (kbd "C-x C-i") 'imenu)
+
 ;;; basics.el ends here

@@ -49,4 +49,7 @@
 ;; Use C-x C-m to do M-x per Steve Yegge's advice
 (global-set-key (kbd "C-x C-m") 'smex)
 
+;; imenu
+(set-default 'imenu-auto-rescan t)
+
 (provide 'init-ido)

@@ -93,21 +93,4 @@
 ;; jade and stylus
 (require-package 'jade-mode)
 
-;; local package list
-     ;; whitespace-cleanup-mode
-     ;; elisp-slime-nav
-     ;; git-commit-mode
-     ;; gitconfig-mode
-     ;; gitignore-mode
-     ;; clojure-mode
-     ;; nrepl
-     ;; rainbow-mode
-     ;; rainbow-delimiters
-     ;; projectile
-     ;; perspective
-     ;; php-mode
-     ;; web-mode
-     ;; sass-mode
-     ;; js2-mode
-
 ;;; init.el ends here
