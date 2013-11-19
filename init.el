@@ -80,7 +80,8 @@
 (add-to-list 'auto-mode-alist '("\\.jshintrc$" . javascript-mode))
 (add-to-list 'magic-mode-alist '("#!/usr/bin/env node" . js2-mode))
 (eval-after-load 'js2-mode '(require 'init-js2-mode))
-
+;; clojure
+(require 'init-clojure)
 ;; restclient
 (require-package 'restclient)
 (add-to-list 'auto-mode-alist '("\\.restclient$" . restclient-mode))
@@ -89,6 +90,8 @@
 (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x v" "C-x 8" "C-x x"
                                      "C-c p"))
 (guide-key-mode 1)
+;; jade and stylus
+(require-package 'jade-mode)
 
 ;; local package list
      ;; whitespace-cleanup-mode
