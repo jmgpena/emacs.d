@@ -80,6 +80,7 @@
 (add-to-list 'auto-mode-alist '("\\.jshintrc$" . javascript-mode))
 (add-to-list 'magic-mode-alist '("#!/usr/bin/env node" . js2-mode))
 (eval-after-load 'js2-mode '(require 'init-js2-mode))
+(require 'init-skewer)
 ;; clojure
 (require 'init-clojure)
 ;; restclient
@@ -92,5 +93,7 @@
 (guide-key-mode 1)
 ;; jade and stylus
 (require-package 'jade-mode)
-
+;; sass
+(require-package 'scss-mode)
+(require-package 'rvm)
 ;;; init.el ends here
