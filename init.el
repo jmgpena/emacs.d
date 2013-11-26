@@ -82,7 +82,7 @@
 (eval-after-load 'js2-mode '(require 'init-js2-mode))
 (require 'init-skewer)
 ;; clojure
-(require 'init-clojure)
+;(require 'init-clojure)
 ;; restclient
 (require-package 'restclient)
 (add-to-list 'auto-mode-alist '("\\.restclient$" . restclient-mode))
@@ -95,5 +95,9 @@
 (require-package 'jade-mode)
 ;; sass
 (require-package 'scss-mode)
+(setq-default scss-compile-at-save nil)
+(setq-default scss-sass-options nil)
+;; ruby
 (require-package 'rvm)
+(rvm-use-default)
 ;;; init.el ends here
