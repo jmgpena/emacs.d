@@ -4,12 +4,12 @@
 
 ;; todo vars to config
 (setenv "TMPDIR" "/tmp")
+(setq mac-control-modifier 'ctrl)
 (setq mac-option-modifier 'meta)
-(setq mac-command-modifier 'control)
+(setq mac-command-modifier 'super)
 (setq mac-right-option-modifier 'none)
 (setq ns-function-modifier 'hyper)
 (setq mac-allow-anti-aliasing t)
-(setq mac-control-modifier 'none)
 
 ;; This sets the Emacs "PATH" environment variable and the `exec-path`
 ;; variable to the same value your login shell sees. The reason this

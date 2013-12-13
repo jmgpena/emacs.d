@@ -80,6 +80,7 @@
 (add-to-list 'auto-mode-alist '("\\.jshintrc$" . javascript-mode))
 (add-to-list 'magic-mode-alist '("#!/usr/bin/env node" . js2-mode))
 (eval-after-load 'js2-mode '(require 'init-js2-mode))
+(require-package 'coffee-mode)
 (require 'init-skewer)
 ;; clojure
 ;(require 'init-clojure)
@@ -96,7 +97,9 @@
 ;; sass
 (require-package 'scss-mode)
 (setq-default scss-compile-at-save nil)
-(setq-default scss-sass-options nil)
+(setq flycheck-scss-executable "scss --compass")
+(setq css-indent-offset 2)
+(eval-after-load 'flycheck '(setq flycheck-checkers (delq 'scss flycheck-checkers)))
 ;; ruby
 (require-package 'rvm)
 (rvm-use-default)
