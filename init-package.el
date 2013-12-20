@@ -42,5 +42,8 @@ re-downloaded in order to locate PACKAGE."
         (package-refresh-contents)
         (require-package package min-version t)))))
 
+;; install melpa helper
+(require-package 'melpa)
+
 (provide 'init-package)
 ;;; init-package.el ends here

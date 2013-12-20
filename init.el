@@ -81,6 +81,7 @@
 (add-to-list 'magic-mode-alist '("#!/usr/bin/env node" . js2-mode))
 (eval-after-load 'js2-mode '(require 'init-js2-mode))
 (require-package 'coffee-mode)
+(require-package 'json-mode)
 (require 'init-skewer)
 ;; clojure
 ;(require 'init-clojure)
