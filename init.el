@@ -95,6 +95,7 @@
 (guide-key-mode 1)
 ;; jade and stylus
 (require-package 'jade-mode)
+(require-package 'stylus-mode)
 ;; sass
 (require-package 'scss-mode)
 (setq-default scss-compile-at-save nil)
