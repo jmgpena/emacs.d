@@ -2,7 +2,6 @@
 ;;; Commentary:
 
 (require 'package)
-(require 'dash)
 
 ;;; Code:
 
@@ -15,6 +14,8 @@
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 
 (package-initialize)
+
+(require 'dash)
 
 (unless
     (and
