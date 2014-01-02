@@ -1,5 +1,4 @@
-(add-to-list 'custom-theme-load-path
-	     (expand-file-name "solarized-emacs" site-lisp-dir))
+(require-package 'solarized-theme)
 
 ;;(setq solarized-broken-srgb nil)
 

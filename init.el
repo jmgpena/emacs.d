@@ -45,9 +45,6 @@
   (when (file-directory-p project)
     (add-to-list 'load-path project)))
 
-;; Load solarized theme
-(require 'init-solarized-emacs)
-
 ;; load split config files
 (load "~/.emacs.d/gui")
 (load "~/.emacs.d/basics")
@@ -55,6 +52,9 @@
 
 ;; Setup packages
 (require 'init-package)
+
+;; Load solarized theme
+(require 'init-solarized-emacs)
 
 ;; load packages and configs
 (require 'init-magit)
