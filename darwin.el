@@ -4,9 +4,9 @@
 
 ;; todo vars to config
 (setenv "TMPDIR" "/tmp")
-(setq mac-control-modifier 'meta)
+(setq mac-control-modifier 'ctrl)
 (setq mac-option-modifier 'super)
-(setq mac-command-modifier 'ctrl)
+(setq mac-command-modifier 'meta)
 (setq mac-right-option-modifier 'none)
 (setq ns-function-modifier 'hyper)
 (setq mac-allow-anti-aliasing t)
@@ -33,7 +33,7 @@
 (set-exec-path-from-shell-PATH)
 
 ;; config variables
-(setq config:font-family "Monaco")
-(setq config:font-size "12")
+(setq config:font-family "Source Code Pro")
+(setq config:font-size "13")
 
 ;;; darwin.el ends here

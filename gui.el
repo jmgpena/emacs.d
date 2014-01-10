@@ -45,9 +45,9 @@
 (setq windmove-wrap-around t)
 
 ;; frame font
-(if (member config:font-family (font-family-list))
+(if (boundp 'config:font-family)
     (set-face-attribute
-     'default nil :font (concat config:font-family " " config:font-size)))
+     'default nil :font (concat config:font-family "-" config:font-size)))
 
 ;;; nice defaults
 (setq   ;x-select-enable-clipboard t
