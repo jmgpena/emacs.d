@@ -91,7 +91,7 @@ point reaches the beginning or end of the buffer, stop there."
 
 (setq-default fill-column 79)
 (add-hook 'text-mode-hook 'turn-on-auto-fill)
-(add-hook 'prog-mode-hook 'turn-on-auto-fill)
+;(add-hook 'prog-mode-hook 'turn-on-auto-fill)
 
 (setq backup-directory-alist
       `((".*" . ,temporary-file-directory)))
