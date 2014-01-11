@@ -3,6 +3,8 @@
 ;;; Code:
 
 (require-package 'projectile)
+(require-package 'ag)
+(setq ag-highlight-search t)
 
 ;; use projectile in project dirs
 (projectile-global-mode)
