@@ -13,16 +13,19 @@
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
 
+;; initialize package system
 (package-initialize)
-
-(require 'dash)
-
 (unless
     (and
      (file-exists-p "~/.emacs.d/elpa/archives/melpa")
      (file-exists-p "~/.emacs.d/elpa/archives/org")
      (file-exists-p "~/.emacs.d/elpa/archives/marmalade"))
   (package-refresh-contents))
+
+;; install dash if not already installed
+(when (not (package-installed-p 'dash))
+  (package-install 'dash))
+(require 'dash)
 
 (defun packages-install (packages)
   (--each packages
@@ -44,7 +47,7 @@ re-downloaded in order to locate PACKAGE."
         (require-package package min-version t)))))
 
 ;; install melpa helper
-(require-package 'melpa)
+;;(require-package 'melpa)
 
 (provide 'init-package)
 ;;; init-package.el ends here
