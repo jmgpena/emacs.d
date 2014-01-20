@@ -84,7 +84,7 @@
 (require-package 'json-mode)
 (require 'init-skewer)
 ;; clojure
-;(require 'init-clojure)
+(require 'init-clojure)
 ;; restclient
 (require-package 'restclient)
 (add-to-list 'auto-mode-alist '("\\.restclient$" . restclient-mode))
