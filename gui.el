@@ -45,7 +45,8 @@
 (setq windmove-wrap-around t)
 
 ;; frame font
-(if (boundp 'config:font-family)
+(if (and (boundp 'config:font-family)
+         (display-graphic-p))
     (set-face-attribute
      'default nil :font (concat config:font-family "-" config:font-size)))
 
