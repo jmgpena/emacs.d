@@ -44,20 +44,15 @@
           ))
 
   (setq org-tag-alist '(
-                        ("bdy" . ?b)
-                        ("mnd" . ?m)
-                        ("fmy" . ?f)
-                        ("hck" . ?h)
-                        ("msc" . ?s)
-                        ("org" . ?o)
-                        ("rlx" . ?r)
-                        ("mop" . ?p)
+                        ("@home" . ?h)
+                        ("@work" . ?w)
+                        ("@mobi" . ?m)
                         ))
 
   (setq org-fontify-done-headline t)
   (custom-set-faces
    '(org-agenda-structure )
-   '(org-done ((t (:foreground "grey" :weight normal :strike-through t)))) 
+   '(org-done ((t (:foreground "grey" :weight normal :strike-through t))))
    '(org-headline-done ((((class color) (min-colors 16) (background dark)) (:foreground "grey" :strike-through t)))))
 
   (setq org-agenda-files '("~/Dropbox/org/wip.org"
