@@ -73,18 +73,17 @@
 (require 'init-php)
 (require 'init-web-mode)
 (require 'init-multiple-cursors)
+(require-package 'editorconfig)
 ;; Javascript
 (require-package 'js2-mode)
+(require-package 'json-mode)
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.jshintrc$" . javascript-mode))
+(add-to-list 'auto-mode-alist '("\\.jshintrc$" . json-mode))
 (add-to-list 'magic-mode-alist '("#!/usr/bin/env node" . js2-mode))
 (eval-after-load 'js2-mode '(require 'init-js2-mode))
 (require-package 'coffee-mode)
-(require-package 'json-mode)
 (require 'init-skewer)
-;; clojure
-(require 'init-clojure)
 ;; restclient
 (require-package 'restclient)
 (add-to-list 'auto-mode-alist '("\\.restclient$" . restclient-mode))
@@ -99,10 +98,12 @@
 ;; sass
 (require-package 'scss-mode)
 (setq-default scss-compile-at-save nil)
-(setq flycheck-scss-executable "scss --compass")
+(setq flycheck-scss-executable "scss -c")
 (setq css-indent-offset 2)
 (eval-after-load 'flycheck '(setq flycheck-checkers (delq 'scss flycheck-checkers)))
 ;; ruby
 (require-package 'rvm)
 (rvm-use-default)
+;; clojure
+(require 'init-clojure)
 ;;; init.el ends here

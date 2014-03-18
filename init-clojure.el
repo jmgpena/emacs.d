@@ -1,4 +1,5 @@
 (require-package 'clojure-mode)
+(require-package 'clojure-test-mode)
 
 (defadvice clojure-test-run-tests (before save-first activate)
   (save-buffer))
