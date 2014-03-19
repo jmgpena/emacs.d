@@ -57,15 +57,16 @@
 (require 'init-solarized-emacs)
 
 ;; load packages and configs
+(require-package 'pos-tip)
+(require 'init-yasnippet)
+(require 'init-ac)
 (require 'init-magit)
 (require 'init-org-plus-contrib)
 (require-package 'htmlize)
 (require-package 'move-text)
 (require 'init-flycheck)
 (require 'init-ido)
-(require 'init-yasnippet)
 (require 'init-smartparens)
-(require-package 'nodejs-repl)
 (require-package 'highlight-escape-sequences)
 (require-package 'perspective)
 (persp-mode t)
@@ -84,6 +85,7 @@
 (eval-after-load 'js2-mode '(require 'init-js2-mode))
 (require-package 'coffee-mode)
 (require 'init-skewer)
+(require-package 'nodejs-repl)
 ;; restclient
 (require-package 'restclient)
 (add-to-list 'auto-mode-alist '("\\.restclient$" . restclient-mode))

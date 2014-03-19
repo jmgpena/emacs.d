@@ -14,6 +14,9 @@
 (setq-default js2-concat-multiline-strings 'eol)
 (setq-default js2-rebind-eol-bol-keys nil)
 
+;; syntax hl level
+(setq js2-highlight-level 3)
+
 ;; Let flycheck handle parse errors
 (setq-default js2-show-parse-errors nil)
 (setq-default js2-strict-missing-semi-warning nil)
@@ -36,5 +39,9 @@
                         nil)))))
 
 (require 'json)
+
+;; auto-completion
+;(require-package 'ac-js2)
+;(add-hook 'js2-mode-hook 'ac-js2-mode)
 
 (provide 'init-js2-mode)
