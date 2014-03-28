@@ -33,7 +33,7 @@
 (set-exec-path-from-shell-PATH)
 
 ;; config variables
-(setq config:font-family "Source Code Pro")
-(setq config:font-size "13")
+(setq config:font-family "Inconsolata")
+(setq config:font-size "15")
 
 ;;; darwin.el ends here
