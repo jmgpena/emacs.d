@@ -14,7 +14,7 @@
 ;(define-key cider-mode-map (kbd "C-,") 'complete-symbol)
 
 ;; Indent and highlight more commands
-(put-clojure-indent 'match 'defun)
+;(put-clojure-indent 'match 'defun)
 
 ;; Hide nrepl buffers when switching buffers (switch to by prefixing with space)
 (setq nrepl-hide-special-buffers t)
