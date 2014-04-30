@@ -78,6 +78,7 @@
 ;; Javascript
 (require-package 'js2-mode)
 (require-package 'json-mode)
+(require-package 'json-reformat)
 (autoload 'js2-mode "js2-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
 (add-to-list 'auto-mode-alist '("\\.jshintrc$" . json-mode))
@@ -106,6 +107,8 @@
 ;; ruby
 (require-package 'rvm)
 (rvm-use-default)
+;; ecb
+(require-package 'ecb)
 ;; clojure
 (require 'init-clojure)
 ;;; init.el ends here

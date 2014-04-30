@@ -10,6 +10,8 @@
 ;; highlights matching pairs
 (show-smartparens-global-mode t)
 
+;; disable automatic escaping
+(setq sp-autoescape-string-quote nil)
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; keybinding management
 

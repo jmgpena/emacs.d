@@ -29,5 +29,12 @@
             (imenu-add-menubar-index))
           )
 
+;; Emmet mode for html and CSS editing
+(require-package 'emmet-mode)
+(add-hook 'sgml-mode-hook 'emmet-mode) ;; Auto-start on any markup modes
+(add-hook 'css-mode-hook  'emmet-mode) ;; enable Emmet's css abbreviation.
+(add-hook 'emmet-mode-hook (lambda () (setq emmet-indentation 2))) ;; indent 2 spaces.
+(setq emmet-move-cursor-between-quotes t) ;; default nil
+
 (provide 'init-web-mode)
 ;;; init-web-mode.el ends here
