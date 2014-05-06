@@ -1,0 +1,11 @@
+# -*- mode: snippet -*-
+#name : Ext method
+# --
+/**
+* $0
+* @param {$1}
+* @return $2
+*/
+$3: function ($4) {
+    $5
+}

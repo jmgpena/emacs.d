@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+#name : Ext property
+# --
+/**
+ * @cfg $0
+ *
+ */
+$1: $2

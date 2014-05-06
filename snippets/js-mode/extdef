@@ -1,0 +1,12 @@
+# -*- mode: snippet -*-
+#name : Ext define template
+# --
+/**
+ * $0
+ *
+ */
+Ext.define('$1', {
+    config: {
+        $2
+    }
+}
