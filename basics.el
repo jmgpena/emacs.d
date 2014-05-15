@@ -137,17 +137,17 @@ point reaches the beginning or end of the buffer, stop there."
 (require 'dired-x)
 
 ;;; save desktop on exit
-(setq desktop-path '("~/.emacs.d/"))
-(setq desktop-dirname "~/.emacs.d/")
-(setq desktop-base-file-name "emacs-desktop")
-;; remove desktop after it's been read
-(add-hook 'desktop-after-read-hook
-          '(lambda ()
-             ;; desktop-remove clears desktop-dirname
-             (setq desktop-dirname-tmp desktop-dirname)
-             (desktop-remove)
-             (setq desktop-dirname desktop-dirname-tmp)))
-(desktop-save-mode 1)
+;; (setq desktop-path '("~/.emacs.d/"))
+;; (setq desktop-dirname "~/.emacs.d/")
+;; (setq desktop-base-file-name "emacs-desktop")
+;; ;; remove desktop after it's been read
+;; (add-hook 'desktop-after-read-hook
+;;           '(lambda ()
+;;              ;; desktop-remove clears desktop-dirname
+;;              (setq desktop-dirname-tmp desktop-dirname)
+;;              (desktop-remove)
+;;              (setq desktop-dirname desktop-dirname-tmp)))
+;; (desktop-save-mode 1)
 
 ;;; global keyboard changes (from better defaults package)
 ;;; and other sources

@@ -10,4 +10,8 @@
             (setq mode-name "EL")
 
             ))
+
+;;; color-identifiers-mode
+(require-package 'color-identifiers-mode)
+
 ;;; prog.el ends here

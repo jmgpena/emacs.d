@@ -45,13 +45,13 @@
   (when (file-directory-p project)
     (add-to-list 'load-path project)))
 
+;; Setup packages
+(require 'init-package)
+
 ;; load split config files
 (load "~/.emacs.d/gui")
 (load "~/.emacs.d/basics")
 (load "~/.emacs.d/prog")
-
-;; Setup packages
-(require 'init-package)
 
 ;; Load solarized theme
 (require 'init-solarized-emacs)
@@ -77,6 +77,7 @@
 (require-package 'editorconfig)
 ;; Javascript
 (require-package 'js2-mode)
+(require-package 'js2-refactor)
 (require-package 'json-mode)
 (require-package 'json-reformat)
 (autoload 'js2-mode "js2-mode" nil t)

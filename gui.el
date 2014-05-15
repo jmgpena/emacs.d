@@ -41,7 +41,7 @@
 (setq whitespace-global-modes '(prog-mode emacs-lisp-mode))
 
 ;; navigate windows with M-<arrows>
-(windmove-default-keybindings 'shift)
+(windmove-default-keybindings 'ctrl)
 (setq windmove-wrap-around t)
 
 ;; frame font
