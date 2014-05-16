@@ -52,32 +52,34 @@
 
 (require 'json)
 
-;;
-;; (defun jp-js2-parse-jshintrc ()
-;;   "This looks recursively up for a .jshintrc and extracts the
-;; globals from it to add them to js2-additional-externs."
-;;   (let* ((jshintrc (locate-dominating-file default-directory "^\\.jshintrc$"))
-;;             (json (and jshintrc
-;;                       (json-read-file (car jshintrc))))
-;;             (globals (and json
-;;                          (cdr (assq 'globals json))))
-;;             )
-;;       (when globals
-;;           (setq js2-additional-externs
-;;               (append
-;;                   (mapcar (lambda (pair)
-;;                               (symbol-name (car pair))
-;;                               )
-;;                       globals
-;;                       )
-;;                   js2-additional-externs
-;;                   )
-;;               )
-;;           (js2-reparse t)
-;;           )
-;;       )
-;;     )
-;; (add-hook 'js2-init-hook 'jp-js2-parse-jshintrc)
+;; parse jshintrc
+(defun jp-js2-parse-jshintrc ()
+  "This looks recursively up for a .jshintrc and extracts the
+globals from it to add them to js2-additional-externs."
+  (let* ((jshintrc (expand-file-name
+                       ".jshintrc"
+                       (locate-dominating-file default-directory ".jshintrc")))
+         (json (and jshintrc
+                    (json-read-file jshintrc)))
+         (globals (and json
+                       (cdr (assq 'globals json))))
+         )
+    (when globals
+      (setq js2-additional-externs
+            (append
+             (mapcar (lambda (pair)
+                       (symbol-name (car pair))
+                       )
+                     globals
+                     )
+             js2-additional-externs
+             )
+            )
+      ;;(js2-reparse t)
+      )
+    )
+  )
+(add-hook 'js2-init-hook 'jp-js2-parse-jshintrc)
 
 ;; auto-completion
 ;(require-package 'ac-js2)
