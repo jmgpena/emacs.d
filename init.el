@@ -53,10 +53,6 @@
 (load "~/.emacs.d/basics")
 (load "~/.emacs.d/prog")
 
-;; ace-window package
-(require-package 'ace-window)
-(global-set-key (kbd "M-p") 'ace-window)
-
 ;; Load solarized theme
 (require 'init-solarized-emacs)
 

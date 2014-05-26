@@ -41,8 +41,13 @@
 (setq whitespace-global-modes '(prog-mode emacs-lisp-mode))
 
 ;; navigate windows with M-<arrows>
-(windmove-default-keybindings 'ctrl)
+(windmove-default-keybindings 'meta)
 (setq windmove-wrap-around t)
+;; ace-window package replace the default emacs other-window keybinding because
+;; the behavior is the same for 2 windows and is nice to get ace-window for
+;; more thant 2
+(require-package 'ace-window)
+(global-set-key (kbd "C-x o") 'ace-window)
 
 ;; frame font
 (if (and (boundp 'config:font-family)
