@@ -389,4 +389,7 @@ point reaches the beginning or end of the buffer, stop there."
 (define-key global-map (kbd "C-c q") 'vr/query-replace)
 ;; if you use multiple-cursors, this is for you:
 (define-key global-map (kbd "C-c m") 'vr/mc-mark)
+;; expand region
+(require-package 'expand-region)
+(global-set-key (kbd "C-=") 'er/expand-region)
 ;;; init.el ends here
