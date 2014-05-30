@@ -327,7 +327,6 @@ point reaches the beginning or end of the buffer, stop there."
 (require-package 'editorconfig)
 (require-package 'pos-tip)
 (require 'init-yasnippet)
-(require 'init-ac)
 (require 'init-magit)
 (require 'init-org-plus-contrib)
 (require-package 'htmlize)
@@ -392,4 +391,7 @@ point reaches the beginning or end of the buffer, stop there."
 ;; expand region
 (require-package 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
+;; company (better autocompletion)
+(require-package 'company)
+(global-company-mode 1)
 ;;; init.el ends here
