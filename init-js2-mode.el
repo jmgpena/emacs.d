@@ -7,6 +7,7 @@
     '("module" "require" "buster" "sinon" "assert" "refute" "setTimeout"
          "clearTimeout" "setInterval" "clearInterval" "location" "__dirname"
          "console" "JSON" "Ext"))
+(setq-default js2-include-jslint-globals t)
 (setq-default js2-idle-timer-delay 0.1)
 (setq-default js2-indent-on-enter-key nil)
 (setq-default js2-mirror-mode nil)
@@ -52,34 +53,35 @@
 
 (require 'json)
 
-;; parse jshintrc
+;; parse jshintrc for more globals
 (defun jp-js2-parse-jshintrc ()
-  "This looks recursively up for a .jshintrc and extracts the
+    "This looks recursively up for a .jshintrc and extracts the
 globals from it to add them to js2-additional-externs."
-  (let* ((jshintrc (expand-file-name
-                       ".jshintrc"
-                       (locate-dominating-file default-directory ".jshintrc")))
-         (json (and jshintrc
-                    (json-read-file jshintrc)))
-         (globals (and json
-                       (cdr (assq 'globals json))))
-         )
-    (when globals
-      (setq js2-additional-externs
-            (append
-             (mapcar (lambda (pair)
-                       (symbol-name (car pair))
-                       )
-                     globals
-                     )
-             js2-additional-externs
-             )
-            )
-      ;;(js2-reparse t)
-      )
-    )
-  )
-(add-hook 'js2-init-hook 'jp-js2-parse-jshintrc)
+    (let* ((jshintrc (expand-file-name
+                         ".jshintrc"
+                         (locate-dominating-file default-directory ".jshintrc")))
+              (json (and (file-readable-p jshintrc)
+                        (json-read-file jshintrc)))
+              (globals (and json
+                           (cdr (assq 'globals json))))
+              )
+        (when globals
+            (setq js2-additional-externs
+                (append
+                    (mapcar (lambda (pair)
+                                (symbol-name (car pair)))
+                        globals)
+                    js2-additional-externs)))))
+
+(defun jp-js2-flycheck-jshintrc ()
+    "DOCS"
+    (let* ((jshintrc (expand-file-name
+                         ".jshintrc"
+                         (locate-dominating-file default-directory ".jshintrc"))))
+        (when (file-readable-p jshintrc)
+            (setq flycheck-jshintrc jshintrc))))
+
+(add-hook 'js2-init-hook 'jp-js2-flycheck-jshintrc)
 
 ;; auto-completion
 ;(require-package 'ac-js2)
