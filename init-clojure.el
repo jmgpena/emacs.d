@@ -1,11 +1,4 @@
 (require-package 'clojure-mode)
-(require-package 'clojure-test-mode)
-
-(defadvice clojure-test-run-tests (before save-first activate)
-  (save-buffer))
-
-(defadvice nrepl-load-current-buffer (before save-first activate)
-  (save-buffer))
 
 (require-package 'cider)
 
@@ -15,9 +8,6 @@
 
 ;; Indent and highlight more commands
 ;(put-clojure-indent 'match 'defun)
-
-;; Hide nrepl buffers when switching buffers (switch to by prefixing with space)
-(setq nrepl-hide-special-buffers t)
 
 ;; Enable error buffer popping also in the REPL:
 (setq cider-repl-popup-stacktraces t)
