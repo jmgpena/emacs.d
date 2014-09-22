@@ -346,6 +346,7 @@ point reaches the beginning or end of the buffer, stop there."
 ;; Javascript
 (require-package 'js2-mode)
 (require-package 'js2-refactor)
+(require-package 'web-beautify)
 (require-package 'json-mode)
 (require-package 'json-reformat)
 (autoload 'js2-mode "js2-mode" nil t)
@@ -353,6 +354,7 @@ point reaches the beginning or end of the buffer, stop there."
 (add-to-list 'auto-mode-alist '("\\.jshintrc$" . json-mode))
 (add-to-list 'magic-mode-alist '("#!/usr/bin/env node" . js2-mode))
 (eval-after-load 'js2-mode '(require 'init-js2-mode))
+(eval-after-load 'js2-mode '(define-key js2-mode-map (kbd "C-c b") 'web-beautify-js))
 (require-package 'coffee-mode)
 (require 'init-skewer)
 (require-package 'nodejs-repl)
