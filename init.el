@@ -322,7 +322,9 @@ point reaches the beginning or end of the buffer, stop there."
 
 ;;;; Load solarized theme
 (require 'init-solarized-emacs)
-
+;; smart mode line
+(require-package 'smart-mode-line)
+(sml/setup)
 ;; load packages and configs
 (require-package 'editorconfig)
 (require-package 'pos-tip)
