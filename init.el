@@ -400,7 +400,8 @@ point reaches the beginning or end of the buffer, stop there."
 ;; company (better autocompletion)
 (require-package 'company)
 (global-company-mode 1)
-
+;; sr-speedbar
+(require-package 'sr-speedbar)
 ;; sunrise commmander stuff
 (require-package 'sunrise-commander)
 (require-package 'sunrise-x-buttons)
