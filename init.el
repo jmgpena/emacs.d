@@ -201,6 +201,8 @@
              '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives
              '("org" . "http://orgmode.org/elpa/") t)
+(add-to-list 'package-archives
+             '("SC" . "http://joseito.republika.pl/sunrise-commander/"))
 ;;(add-to-list 'package-archives
 ;;             '("marmalade" . "http://marmalade-repo.org/packages/") t)
 
@@ -398,4 +400,8 @@ point reaches the beginning or end of the buffer, stop there."
 ;; company (better autocompletion)
 (require-package 'company)
 (global-company-mode 1)
+
+;; sunrise commmander stuff
+(require-package 'sunrise-commander)
+(require-package 'sunrise-x-buttons)
 ;;; init.el ends here
