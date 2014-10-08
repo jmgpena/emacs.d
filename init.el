@@ -27,6 +27,7 @@
 ;;-----------------------------------------------------------------------------
 (require 'init-utils)
 (require 'init-site-lisp)
+(require 'init-elpa)
 
 ;;;; User and system configuration
 (setq user-full-name "Jorge Pena"
@@ -181,70 +182,7 @@
 ;; set lang to enable Chinese display in shell-mode
 (setenv "LANG" "en_US.UTF-8")
 
-;;;; Proxy configuration
-(require 'url)
-(let ((proxy (url-generic-parse-url (getenv "HTTP_PROXY"))))
-  (when (stringp (url-host proxy))
-    (setq url-proxy-services
-          `(("http" . ,(concat (url-host proxy)
-                               ":"
-                               (number-to-string (url-port proxy))))
-            ("https" . ,(concat (url-host proxy)
-                                ":"
-                                (number-to-string (url-port proxy))))
-            ("ftp" . ,(concat (url-host proxy)
-                              ":"
-                              (number-to-string (url-port proxy))))))))
 
-;;;; Paths
-
-
-;;;; Packages
-
-(require 'package)
-;; Define package archives
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives
-             '("org" . "http://orgmode.org/elpa/") t)
-(add-to-list 'package-archives
-             '("SC" . "http://joseito.republika.pl/sunrise-commander/"))
-;;(add-to-list 'package-archives
-;;             '("marmalade" . "http://marmalade-repo.org/packages/") t)
-
-;; initialize package system
-(package-initialize)
-(unless
-    (and
-     (file-exists-p "~/.emacs.d/elpa/archives/melpa")
-     (file-exists-p "~/.emacs.d/elpa/archives/org")
-     (file-exists-p "~/.emacs.d/elpa/archives/marmalade"))
-  (package-refresh-contents))
-
-;; install dash if not already installed
-(when (not (package-installed-p 'dash))
-  (package-install 'dash))
-(require 'dash)
-
-(defun packages-install (packages)
-    "Install packages from a list (PACKAGES)."
-  (--each packages
-    (when (not (package-installed-p it))
-      (package-install it)))
-  (delete-other-windows))
-
-;;; On-demand installation of packages
-(defun require-package (package &optional min-version no-refresh)
-  "Install given PACKAGE, optionally requiring MIN-VERSION.
-If NO-REFRESH is non-nil, the available package lists will not be
-re-downloaded in order to locate PACKAGE."
-  (if (package-installed-p package min-version)
-      t
-    (if (or (assoc package package-archive-contents) no-refresh)
-        (package-install package)
-      (progn
-        (package-refresh-contents)
-        (require-package package min-version t)))))
 
 ;;;; Move between windows
 ;; navigate windows with M-<arrows>
