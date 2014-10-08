@@ -27,7 +27,7 @@
 ;; add lisp dir to load path
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
-;;-----------------------------------------------------------------------------
+;;----------------------------------------------------------------------------
 ;; Bootstrap config
 ;;-----------------------------------------------------------------------------
 (require 'init-utils)
@@ -44,6 +44,8 @@
 (require 'init-themes)
 (require 'init-osx-keys)
 (require 'init-gui-frames)
+(require 'init-dired)
+(require 'init-isearch)
 
 ;;;; User and system configuration
 (setq user-full-name "Jorge Pena"
@@ -150,9 +152,6 @@
 (setq-default ispell-program-name "aspell"
               ispell-extra-args '("--sug-mode=ultra"))
 
-;; jump dired
-(require 'dired-x)
-
 ; whitespace settings
 (require 'whitespace)
 (setq whitespace-style '(face spaces tabs newline space-mark tab-mark
@@ -247,14 +246,8 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-(global-set-key (kbd "C-s") 'isearch-forward-regexp)
-(global-set-key (kbd "C-r") 'isearch-backward-regexp)
-(global-set-key (kbd "C-M-s") 'isearch-forward)
-(global-set-key (kbd "C-M-r") 'isearch-backward)
-
 ;; imenu
 (global-set-key (kbd "C-x C-i") 'imenu)
-
 
 ;;;; Elisp
 (setq lisp-indent-offset nil)
