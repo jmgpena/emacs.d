@@ -47,6 +47,7 @@
 (require 'init-dired)
 (require 'init-isearch)
 (require 'init-grep)
+(require 'init-uniquify)
 
 ;;;; User and system configuration
 (setq user-full-name "Jorge Pena"
@@ -145,9 +146,6 @@
   (if (find-file (ido-completing-read "Find recent file: " recentf-list))
       (message "Opening file...")
     (message "Aborting")))
-
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'post-forward-angle-brackets)
 
 ;; use aspell instead of ispell
 (setq-default ispell-program-name "aspell"
