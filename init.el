@@ -21,13 +21,17 @@
 ;; Set path to elisp dependencies
 (defvar site-lisp-dir
     (expand-file-name "site-lisp" user-emacs-directory))
-(add-to-list 'load-path user-emacs-directory)
 (add-to-list 'load-path site-lisp-dir)
 
 ;; Add external projects to load path
 (dolist (project (directory-files site-lisp-dir t "\\w+"))
   (when (file-directory-p project)
     (add-to-list 'load-path project)))
+
+;;-----------------------------------------------------------------------------
+;; Bootstrap config
+;;-----------------------------------------------------------------------------
+(require 'init-utils)
 
 ;;;; User and system configuration
 (setq user-full-name "Jorge Pena"
@@ -303,10 +307,6 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-M-s") 'isearch-forward)
 (global-set-key (kbd "C-M-r") 'isearch-backward)
-
-;; don't quit that easily
-(global-set-key (kbd "C-x r q") 'save-buffers-kill-terminal)
-(global-set-key (kbd "C-x C-c") 'delete-frame)
 
 ;; imenu
 (global-set-key (kbd "C-x C-i") 'imenu)
