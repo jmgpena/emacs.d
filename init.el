@@ -46,6 +46,7 @@
 (require 'init-gui-frames)
 (require 'init-dired)
 (require 'init-isearch)
+(require 'init-grep)
 
 ;;;; User and system configuration
 (setq user-full-name "Jorge Pena"
