@@ -1,0 +1,14 @@
+# -*- mode: snippet -*-
+#name : A elisp file header
+# --
+;;; ${1:filename}.el --- ${2:Simple description}
+;;; Commentary:
+;;;
+;;; By jmgpena
+;;;
+;;; Code:
+
+$0
+
+(provide '$1)
+;;; $1.el ends here
