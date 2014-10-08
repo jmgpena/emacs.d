@@ -8,6 +8,27 @@
 ;; Show debugger on error
 (setq debug-on-error t)
 
+;; This only works for emacs 24 and up
+(let ((minver 24))
+  (unless (>= emacs-major-version minver)
+    (error "Your Emacs is too old -- this config requries v%s or higher!" minver)))
+
+;; Keep emacs Custom-settings in separate file
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+
+;; add lisp dir to load path
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+;; Set path to elisp dependencies
+(defvar site-lisp-dir
+    (expand-file-name "site-lisp" user-emacs-directory))
+(add-to-list 'load-path user-emacs-directory)
+(add-to-list 'load-path site-lisp-dir)
+
+;; Add external projects to load path
+(dolist (project (directory-files site-lisp-dir t "\\w+"))
+  (when (file-directory-p project)
+    (add-to-list 'load-path project)))
+
 ;;;; User and system configuration
 (setq user-full-name "Jorge Pena"
       user-mail-address "jorge@jmgpena.net")
@@ -178,20 +199,6 @@
 
 ;;;; Paths
 
-;; Set path to elisp dependencies
-(defvar site-lisp-dir
-    (expand-file-name "site-lisp" user-emacs-directory))
-(add-to-list 'load-path user-emacs-directory)
-(add-to-list 'load-path site-lisp-dir)
-
-;; Keep emacs Custom-settings in separate file
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file)
-
-;; Add external projects to load path
-(dolist (project (directory-files site-lisp-dir t "\\w+"))
-  (when (file-directory-p project)
-    (add-to-list 'load-path project)))
 
 ;;;; Packages
 

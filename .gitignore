@@ -5,6 +5,7 @@ saved-places
 *.elc
 elpa
 *~
+/.custom.el*
 /.emacs.desktop
 /.emacs.desktop.lock
 /.ido.last
@@ -12,3 +13,8 @@ elpa
 /projectile.cache
 /tramp
 /url/cookies
+/.mc-lists.el
+/.org-id-locations
+/ac-comphist.dat
+/bookmarks
+/geben/
