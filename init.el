@@ -49,6 +49,7 @@
 (require 'init-grep)
 (require 'init-uniquify)
 (require 'init-ibuffer)
+(require 'init-flycheck)
 
 ;;;; User and system configuration
 (setq user-full-name "Jorge Pena"
@@ -278,7 +279,6 @@ point reaches the beginning or end of the buffer, stop there."
 (require 'init-org-plus-contrib)
 (require-package 'htmlize)
 (require-package 'move-text)
-(require 'init-flycheck)
 (require 'init-ido)
 (require 'init-smartparens)
 (require-package 'highlight-escape-sequences)
