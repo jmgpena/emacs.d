@@ -29,13 +29,22 @@
 (require 'init-site-lisp)
 (require 'init-elpa)
 
+;;-----------------------------------------------------------------------------
+;; Load configs for specific features and modes
+;;-----------------------------------------------------------------------------
+(require-package 'wgrep) ;; edit grep/ag files in results buffer
+
+(require 'init-frame-hooks)
+(require 'init-xterm)
+(require 'init-themes)
+
 ;;;; User and system configuration
 (setq user-full-name "Jorge Pena"
       user-mail-address "jorge@jmgpena.net")
 
 ;; load system specific config settings
 (defvar config:sysinit-file
-      (concat "~/.emacs.d/" (symbol-name system-type) ".el"))
+      (concat "~/.emacs.d/lisp/" (symbol-name system-type) ".el"))
 (when (file-exists-p config:sysinit-file)
   (load config:sysinit-file))
 ;; frame font
