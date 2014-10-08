@@ -43,6 +43,7 @@
 (require 'init-xterm)
 (require 'init-themes)
 (require 'init-osx-keys)
+(require 'init-gui-frames)
 
 ;;;; User and system configuration
 (setq user-full-name "Jorge Pena"
@@ -61,11 +62,6 @@
 
 ;;; Basic Settings
 
-;; remove toolbar and scrollbar
-(dolist (mode '( tool-bar-mode scroll-bar-mode))
-  (when (fboundp mode) (funcall mode -1)))
-;; Don't show splash screen
-(setq inhibit-startup-message t)
 ;; set the default directory
 (setq default-directory "~/")
 ;; memory config - increase gc threshold to 20MB
