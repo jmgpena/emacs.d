@@ -14,24 +14,19 @@
     (error "Your Emacs is too old -- this config requries v%s or higher!" minver)))
 
 ;; Keep emacs Custom-settings in separate file
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+ (let ((custom-file-name (expand-file-name "custom.el" user-emacs-directory)))
+  (setq custom-file custom-file-name)
+  (when (file-exists-p custom-file-name)
+    (load custom-file-name)))
 
 ;; add lisp dir to load path
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
-;; Set path to elisp dependencies
-(defvar site-lisp-dir
-    (expand-file-name "site-lisp" user-emacs-directory))
-(add-to-list 'load-path site-lisp-dir)
-
-;; Add external projects to load path
-(dolist (project (directory-files site-lisp-dir t "\\w+"))
-  (when (file-directory-p project)
-    (add-to-list 'load-path project)))
 
 ;;-----------------------------------------------------------------------------
 ;; Bootstrap config
 ;;-----------------------------------------------------------------------------
 (require 'init-utils)
+(require 'init-site-lisp)
 
 ;;;; User and system configuration
 (setq user-full-name "Jorge Pena"

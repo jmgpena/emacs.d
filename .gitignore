@@ -5,7 +5,7 @@ saved-places
 *.elc
 elpa
 *~
-/.custom.el*
+/custom.el*
 /.emacs.desktop
 /.emacs.desktop.lock
 /.ido.last
