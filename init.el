@@ -13,6 +13,11 @@
   (unless (>= emacs-major-version minver)
     (error "Your Emacs is too old -- this config requries v%s or higher!" minver)))
 
+;; System type constants
+(defconst *is-a-mac* (eq system-type 'darwin))
+(defconst *is-a-pc* (eq system-type 'windows-nt))
+(defconst *is-a-linux* (eq system-type 'linux))
+
 ;; Keep emacs Custom-settings in separate file
  (let ((custom-file-name (expand-file-name "custom.el" user-emacs-directory)))
   (setq custom-file custom-file-name)
@@ -37,6 +42,7 @@
 (require 'init-frame-hooks)
 (require 'init-xterm)
 (require 'init-themes)
+(require 'init-osx-keys)
 
 ;;;; User and system configuration
 (setq user-full-name "Jorge Pena"
