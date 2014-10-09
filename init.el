@@ -67,6 +67,8 @@
 
 (require 'init-editing-utils)
 
+(require 'init-vc)
+
 ;;;; User and system configuration
 (setq user-full-name "Jorge Pena"
       user-mail-address "jorge@jmgpena.net")
@@ -213,7 +215,6 @@ point reaches the beginning or end of the buffer, stop there."
 (require-package 'editorconfig)
 (require-package 'pos-tip)
 (require 'init-yasnippet)
-(require 'init-magit)
 (require 'init-org-plus-contrib)
 (require-package 'htmlize)
 (require-package 'move-text)

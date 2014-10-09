@@ -34,7 +34,7 @@
  ring-bell-function 'ignore)
 
 ;; make the fringe thinner (default is 8 in pixels)
-(fringe-mode 4)
+(fringe-mode 8)
 ;; Toggle line highlighting in all buffers
 (global-hl-line-mode t)
 
