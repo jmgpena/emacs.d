@@ -27,6 +27,12 @@
 ;; add lisp dir to load path
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
+;; load system specific config settings
+(defvar config:sysinit-file
+      (concat "~/.emacs.d/lisp/" (symbol-name system-type) ".el"))
+(when (file-exists-p config:sysinit-file)
+  (load config:sysinit-file))
+
 ;;----------------------------------------------------------------------------
 ;; Bootstrap config
 ;;-----------------------------------------------------------------------------
@@ -57,21 +63,11 @@
 (require 'init-auto-complete)
 (require 'init-windows)
 (require 'init-sessions)
+(require 'init-fonts)
 
 ;;;; User and system configuration
 (setq user-full-name "Jorge Pena"
       user-mail-address "jorge@jmgpena.net")
-
-;; load system specific config settings
-(defvar config:sysinit-file
-      (concat "~/.emacs.d/lisp/" (symbol-name system-type) ".el"))
-(when (file-exists-p config:sysinit-file)
-  (load config:sysinit-file))
-;; frame font
-(if (and (boundp 'config:font-family)
-         (display-graphic-p))
-    (set-face-attribute
-     'default nil :font (concat config:font-family "-" config:font-size)))
 
 ;;; Basic Settings
 
