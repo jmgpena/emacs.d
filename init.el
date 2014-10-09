@@ -64,6 +64,7 @@
 (require 'init-windows)
 (require 'init-sessions)
 (require 'init-fonts)
+
 (require 'init-editing-utils)
 
 ;;;; User and system configuration
@@ -96,9 +97,6 @@
 ;; as C mode.
 (setq-default major-mode 'text-mode)
 
-;; set fill-column for text mode
-(setq-default fill-column 79)
-(add-hook 'text-mode-hook 'turn-on-auto-fill)
 
 ;; save backups to temporary dir
 (setq backup-directory-alist
@@ -226,7 +224,7 @@ point reaches the beginning or end of the buffer, stop there."
 (require 'init-projectile)
 (require 'init-php)
 (require 'init-web-mode)
-(require 'init-multiple-cursors)
+
 ;;; color-identifiers-mode
 (require-package 'color-identifiers-mode)
 ;; Javascript
@@ -247,11 +245,6 @@ point reaches the beginning or end of the buffer, stop there."
 ;; restclient
 (require-package 'restclient)
 (add-to-list 'auto-mode-alist '("\\.restclient$" . restclient-mode))
-;; guide-key
-(require-package 'guide-key)
-(setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x v" "C-x 8" "C-x x"
-                                     "C-c p"))
-(guide-key-mode 1)
 ;; jade and stylus
 (require-package 'jade-mode)
 (require-package 'stylus-mode)
@@ -266,8 +259,6 @@ point reaches the beginning or end of the buffer, stop there."
 ;; ruby
 (require-package 'rvm)
 (rvm-use-default)
-;; ecb
-(require-package 'ecb)
 ;; clojure
 (require 'init-clojure)
 ;; Visual regexp
@@ -276,9 +267,6 @@ point reaches the beginning or end of the buffer, stop there."
 (define-key global-map (kbd "C-c q") 'vr/query-replace)
 ;; if you use multiple-cursors, this is for you:
 (define-key global-map (kbd "C-c m") 'vr/mc-mark)
-;; expand region
-(require-package 'expand-region)
-(global-set-key (kbd "C-=") 'er/expand-region)
 ;; company (better autocompletion)
 (require-package 'company)
 (global-company-mode 1)
