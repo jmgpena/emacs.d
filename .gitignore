@@ -18,3 +18,8 @@ elpa
 /ac-comphist.dat
 /bookmarks
 /geben/
+/.session
+/frame-restore-parameters
+/history
+/server/
+/site-lisp/
