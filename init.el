@@ -64,6 +64,7 @@
 (require 'init-windows)
 (require 'init-sessions)
 (require 'init-fonts)
+(require 'init-editing-utils)
 
 ;;;; User and system configuration
 (setq user-full-name "Jorge Pena"
@@ -83,37 +84,11 @@
 (set-keyboard-coding-system 'utf-8-unix)
 ;; set environment coding system
 (set-language-environment "UTF-8")
-;; auto revert buffer globally
-(global-auto-revert-mode t)
 ;; set TAB and indention
 (setq-default tab-width 4)
 (setq-default indent-tabs-mode nil)
 ;; y or n is suffice for a yes or no question
 (fset 'yes-or-no-p 'y-or-n-p)
-;; always add new line to the end of a file
-(setq require-final-newline t)
-;; add no new lines when "arrow-down key" at the end of a buffer
-(setq next-line-add-newlines nil)
-;; prevent the annoying beep on errors
-(setq ring-bell-function 'ignore)
-;; remove trailing whitespaces before save
-(add-hook 'before-save-hook 'delete-trailing-whitespace)
-;; enable to support navigate in camelCase words
-(global-subword-mode t)
-;; delete the selection with a keypress
-(delete-selection-mode t)
-;; show column number and line number
-(dolist (mode '(column-number-mode line-number-mode))
-  (when (fboundp mode) (funcall mode t)))
-;; make the fringe thinner (default is 8 in pixels)
-(fringe-mode 4)
-;; Toggle line highlighting in all buffers
-(global-hl-line-mode t)
-;; Highlight tabs
-(setq-default highlight-tabs t)
-;; And trailing whitespace
-(setq-default show-trailing-whitespace t)
-
 
 ;; set text-mode as the default major mode, instead of fundamental-mode
 ;; The first of the two lines in parentheses tells Emacs to turn on Text mode
