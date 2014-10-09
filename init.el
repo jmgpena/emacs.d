@@ -52,6 +52,7 @@
 (require 'init-flycheck)
 
 (require 'init-recentf)
+(require 'init-ido)
 
 ;;;; User and system configuration
 (setq user-full-name "Jorge Pena"
@@ -197,10 +198,6 @@
 ;; automatically indent after return
 (define-key global-map (kbd "RET") 'newline-and-indent)
 
-;; get rid of `find-file-read-only' and replace it with something
-;; more useful.
-(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
-
 ;; smart move to beginning of line
 (defun smarter-move-beginning-of-line (arg)
   "Move point back to indentation of beginning of line.
@@ -266,7 +263,6 @@ point reaches the beginning or end of the buffer, stop there."
 (require 'init-org-plus-contrib)
 (require-package 'htmlize)
 (require-package 'move-text)
-(require 'init-ido)
 (require 'init-smartparens)
 (require-package 'highlight-escape-sequences)
 (require-package 'perspective)

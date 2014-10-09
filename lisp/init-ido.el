@@ -1,3 +1,10 @@
+;;; init-ido.el --- Ido configuration
+;;; Commentary:
+;;;
+;;; By jmgpena
+;;;
+;;; Code:
+
 ;; use flx for ido
 (require 'ido)
 (require-package 'ido-ubiquitous)
@@ -49,7 +56,19 @@
 ;; Use C-x C-m to do M-x per Steve Yegge's advice
 (global-set-key (kbd "C-x C-m") 'smex)
 
+(require-package 'idomenu)
 ;; imenu
 (set-default 'imenu-auto-rescan t)
 
+;; get rid of `find-file-read-only' and replace it with something
+;; more useful.
+(defun ido-recentf-open ()
+  "Use `ido-completing-read' to \\[find-file] a recent file."
+  (interactive)
+  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
+      (message "Opening file...")
+    (message "Aborting")))
+(global-set-key (kbd "C-x C-r") 'ido-recentf-open)
+
 (provide 'init-ido)
+;;; init-ido.el ends here
