@@ -19,7 +19,7 @@
 (defconst *is-a-linux* (eq system-type 'linux))
 
 ;; Keep emacs Custom-settings in separate file
- (let ((custom-file-name (expand-file-name "custom.el" user-emacs-directory)))
+(let ((custom-file-name (expand-file-name "custom.el" user-emacs-directory)))
   (setq custom-file custom-file-name)
   (when (file-exists-p custom-file-name)
     (load custom-file-name)))
@@ -68,6 +68,13 @@
 (require 'init-editing-utils)
 
 (require 'init-vc)
+(require 'init-markdown)
+(require 'init-csv)
+(require 'init-javascript)
+
+;; rainbow delimiters
+(require-package 'rainbow-delimiters)
+(add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 ;;;; User and system configuration
 (setq user-full-name "Jorge Pena"
@@ -225,24 +232,8 @@ point reaches the beginning or end of the buffer, stop there."
 (require 'init-projectile)
 (require 'init-php)
 (require 'init-web-mode)
-
 ;;; color-identifiers-mode
 (require-package 'color-identifiers-mode)
-;; Javascript
-(require-package 'js2-mode)
-(require-package 'js2-refactor)
-(require-package 'web-beautify)
-(require-package 'json-mode)
-(require-package 'json-reformat)
-(autoload 'js2-mode "js2-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.js$" . js2-mode))
-(add-to-list 'auto-mode-alist '("\\.jshintrc$" . json-mode))
-(add-to-list 'magic-mode-alist '("#!/usr/bin/env node" . js2-mode))
-(eval-after-load 'js2-mode '(require 'init-js2-mode))
-(eval-after-load 'js2-mode '(define-key js2-mode-map (kbd "C-c b") 'web-beautify-js))
-(require-package 'coffee-mode)
-(require 'init-skewer)
-(require-package 'nodejs-repl)
 ;; restclient
 (require-package 'restclient)
 (add-to-list 'auto-mode-alist '("\\.restclient$" . restclient-mode))
