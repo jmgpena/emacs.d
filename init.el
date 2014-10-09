@@ -55,6 +55,7 @@
 (require 'init-ido)
 (require 'init-hippie-expand)
 (require 'init-auto-complete)
+(require 'init-windows)
 
 ;;;; User and system configuration
 (setq user-full-name "Jorge Pena"
@@ -167,7 +168,7 @@
 (setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
 
 ;; shell-mode settings
-(unless (eq system-type 'windows-nt)
+(unless *is-a-pc*
   (setq-default explicit-shell-file-name "/bin/bash")
   (setq-default shell-file-name "/bin/bash"))
 ;; always insert at the bottom
@@ -182,18 +183,6 @@
 (setenv "PAGER" "cat")
 ;; set lang to enable Chinese display in shell-mode
 (setenv "LANG" "en_US.UTF-8")
-
-
-
-;;;; Move between windows
-;; navigate windows with M-<arrows>
-(windmove-default-keybindings 'meta)
-(setq windmove-wrap-around t)
-;; ace-window package replace the default emacs other-window keybinding because
-;; the behavior is the same for 2 windows and is nice to get ace-window for
-;; more thant 2
-(require-package 'ace-window)
-(global-set-key (kbd "C-x o") 'ace-window)
 
 ;;;; Keybindings
 
