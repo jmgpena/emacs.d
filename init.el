@@ -54,7 +54,7 @@
 (require 'init-recentf)
 (require 'init-ido)
 (require 'init-hippie-expand)
-
+(require 'init-auto-complete)
 
 ;;;; User and system configuration
 (setq user-full-name "Jorge Pena"
