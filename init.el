@@ -51,6 +51,8 @@
 (require 'init-ibuffer)
 (require 'init-flycheck)
 
+(require 'init-recentf)
+
 ;;;; User and system configuration
 (setq user-full-name "Jorge Pena"
       user-mail-address "jorge@jmgpena.net")
@@ -133,21 +135,6 @@
 (require 'saveplace)
 (setq-default save-place t)
 (setq save-place-file (concat user-emacs-directory "saved-places"))
-
-;;; recent files
-(require 'recentf)
-;; save the .recentf file to .emacs.d/
-(setq recentf-save-file (concat user-emacs-directory ".recentf"))
-;; enable recent files mode.
-(recentf-mode t)
-;; 50 files ought to be enough.
-(setq recentf-max-saved-items 50)
-(defun ido-recentf-open ()
-  "Use `ido-completing-read' to \\[find-file] a recent file."
-  (interactive)
-  (if (find-file (ido-completing-read "Find recent file: " recentf-list))
-      (message "Opening file...")
-    (message "Aborting")))
 
 ;; use aspell instead of ispell
 (setq-default ispell-program-name "aspell"
