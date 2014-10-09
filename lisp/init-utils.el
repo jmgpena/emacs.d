@@ -65,5 +65,11 @@
         (error "Cannot open tramp file")
       (browse-url (concat "file://" file-name)))))
 
+;;;----------------------------------------------------------------------------
+;;; Timing functions
+;;;----------------------------------------------------------------------------
+(defun site/time-subtract-millis (b a)
+  (* 1000.0 (float-time (time-subtract b a))))
+
 (provide 'init-utils)
 ;;; init-utils.el ends here

@@ -56,6 +56,7 @@
 (require 'init-hippie-expand)
 (require 'init-auto-complete)
 (require 'init-windows)
+(require 'init-sessions)
 
 ;;;; User and system configuration
 (setq user-full-name "Jorge Pena"
