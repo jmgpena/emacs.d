@@ -71,6 +71,8 @@
 (require 'init-markdown)
 (require 'init-csv)
 (require 'init-javascript)
+(require 'init-php)
+(require 'init-web-mode)
 
 ;; rainbow delimiters
 (require-package 'rainbow-delimiters)
@@ -230,8 +232,7 @@ point reaches the beginning or end of the buffer, stop there."
 (require-package 'perspective)
 (persp-mode t)
 (require 'init-projectile)
-(require 'init-php)
-(require 'init-web-mode)
+
 ;;; color-identifiers-mode
 (require-package 'color-identifiers-mode)
 ;; restclient
