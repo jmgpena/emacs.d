@@ -59,6 +59,8 @@
 (require-package 'idomenu)
 ;; imenu
 (set-default 'imenu-auto-rescan t)
+(global-set-key (kbd "C-x C-i") 'idomenu)
+
 
 ;; get rid of `find-file-read-only' and replace it with something
 ;; more useful.

@@ -53,6 +53,8 @@
 
 (require 'init-recentf)
 (require 'init-ido)
+(require 'init-hippie-expand)
+
 
 ;;;; User and system configuration
 (setq user-full-name "Jorge Pena"
@@ -225,13 +227,6 @@ point reaches the beginning or end of the buffer, stop there."
 ;; remap C-a to `smarter-move-beginning-of-line'
 (global-set-key [remap move-beginning-of-line]
                 'smarter-move-beginning-of-line)
-
-;;; global keyboard changes (from better defaults package)
-;;; and other sources
-(global-set-key (kbd "M-/") 'hippie-expand)
-
-;; imenu
-(global-set-key (kbd "C-x C-i") 'imenu)
 
 ;;;; Elisp
 (setq lisp-indent-offset nil)
