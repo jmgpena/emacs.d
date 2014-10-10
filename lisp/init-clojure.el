@@ -41,8 +41,8 @@
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 
  ;; nrepl isn't based on comint
-  (add-hook 'cider-repl-mode-hook
-            (lambda () (setq show-trailing-whitespace nil))))
+(add-hook 'cider-repl-mode-hook
+          (lambda () (setq show-trailing-whitespace nil)))
 
 (provide 'init-clojure)
 ;;; init-clojure.el ends here

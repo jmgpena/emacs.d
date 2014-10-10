@@ -5,6 +5,10 @@
 ;;;
 ;;; Code:
 
+;;;----------------------------------------------------------------------------
+;;; Default settings
+;;;----------------------------------------------------------------------------
+
 (setq-default
  blink-cursor-delay 0
  blink-cursor-interval 0.4
@@ -31,10 +35,26 @@
  truncate-lines nil
  truncate-partial-width-windows nil
  visible-bell t
- ring-bell-function 'ignore)
+ ring-bell-function 'ignore
+ apropos-do-all t
+ mouse-yank-at-point t)
 
-;; make the fringe thinner (default is 8 in pixels)
-(fringe-mode 8)
+;; set TAB and indention
+(setq-default tab-width 4)
+(setq-default indent-tabs-mode nil)
+;; y or n is suffice for a yes or no question
+(fset 'yes-or-no-p 'y-or-n-p)
+;; set text-mode as the default major mode, instead of fundamental-mode
+;; The first of the two lines in parentheses tells Emacs to turn on Text mode
+;; when you find a file, unless that file should go into some other mode, such
+;; as C mode.
+(setq-default major-mode 'text-mode)
+;; make scripts executable by default
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
+;;;; save last point in files
+(require 'saveplace)
+(setq-default save-place t)
+(setq save-place-file (concat user-emacs-directory "saved-places"))
 ;; Toggle line highlighting in all buffers
 (global-hl-line-mode t)
 
@@ -62,6 +82,19 @@
 ;; enable to support navigate in camelCase words
 (global-subword-mode t)
 
+;;;----------------------------------------------------------------------------
+;;; Whitespace settings
+;;;----------------------------------------------------------------------------
+; whitespace settings
+(require 'whitespace)
+(setq whitespace-style '(face spaces tabs newline space-mark tab-mark
+                              newline-mark lines-tail trailing))
+(setq whitespace-display-mappings
+      '((space-mark 32 [183] [46])
+        (newline-mark 10 [182 10])
+        (tab-mark 9 [9655 9] [92 9])))
+(setq whitespace-line-column 80)
+
 ;;----------------------------------------------------------------------------
 ;; Don't disable narrowing commands
 ;;----------------------------------------------------------------------------
@@ -79,7 +112,6 @@
 ;;----------------------------------------------------------------------------
 (require-package 'expand-region)
 (global-set-key (kbd "C-=") 'er/expand-region)
-
 
 ;;----------------------------------------------------------------------------
 ;; Don't disable case-change functions
@@ -121,6 +153,9 @@
 (global-set-key (kbd "C-c c c") 'mc/edit-lines)
 (global-set-key (kbd "C-c c e") 'mc/edit-ends-of-lines)
 (global-set-key (kbd "C-c c a") 'mc/edit-beginnings-of-lines)
+
+;; automatically indent after return
+(define-key global-map (kbd "RET") 'newline-and-indent)
 
 ;;;----------------------------------------------------------------------------
 ;;; Kill back to indentation

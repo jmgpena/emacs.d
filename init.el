@@ -33,6 +33,21 @@
 (when (file-exists-p config:sysinit-file)
   (load config:sysinit-file))
 
+;;;----------------------------------------------------------------------------
+;;; User and system settings
+;;;----------------------------------------------------------------------------
+(setq user-full-name "Jorge Pena"
+      user-mail-address "jorge@jmgpena.net")
+;; set the default directory
+(setq default-directory "~/")
+;; memory config - increase gc threshold to 20MB
+(setq gc-cons-threshold 20000000)
+;; save backups to temporary dir
+(setq backup-directory-alist
+      `((".*" . ,temporary-file-directory)))
+(setq auto-save-file-name-transforms
+      `((".*" ,temporary-file-directory t)))
+
 ;;----------------------------------------------------------------------------
 ;; Bootstrap config
 ;;-----------------------------------------------------------------------------
@@ -83,122 +98,29 @@
 (require 'init-smartparens)
 (require 'init-lisp)
 (require 'init-clojure)
+(require 'init-locales)
+(require 'init-shell)
+(require 'init-spelling)
+(require 'init-yasnippet)
+(require 'init-projectile)
 
+;;;----------------------------------------------------------------------------
+;;; Packages without configuration
+;;;----------------------------------------------------------------------------
 ;; rainbow delimiters
 (require-package 'rainbow-delimiters)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
-
-;;;; User and system configuration
-(setq user-full-name "Jorge Pena"
-      user-mail-address "jorge@jmgpena.net")
-
-;;; Basic Settings
-
-;; set the default directory
-(setq default-directory "~/")
-;; memory config - increase gc threshold to 20MB
-(setq gc-cons-threshold 20000000)
-;; locale settings and coding
-(setq system-time-locale "C")
-(prefer-coding-system 'utf-8-unix)
-(set-default-coding-systems 'utf-8-unix)
-(set-terminal-coding-system 'utf-8-unix)
-(set-keyboard-coding-system 'utf-8-unix)
-;; set environment coding system
-(set-language-environment "UTF-8")
-;; set TAB and indention
-(setq-default tab-width 4)
-(setq-default indent-tabs-mode nil)
-;; y or n is suffice for a yes or no question
-(fset 'yes-or-no-p 'y-or-n-p)
-
-;; set text-mode as the default major mode, instead of fundamental-mode
-;; The first of the two lines in parentheses tells Emacs to turn on Text mode
-;; when you find a file, unless that file should go into some other mode, such
-;; as C mode.
-(setq-default major-mode 'text-mode)
-
-
-;; save backups to temporary dir
-(setq backup-directory-alist
-      `((".*" . ,temporary-file-directory)))
-(setq auto-save-file-name-transforms
-      `((".*" ,temporary-file-directory t)))
-
-
-;;; save last point in files
-(require 'saveplace)
-(setq-default save-place t)
-(setq save-place-file (concat user-emacs-directory "saved-places"))
-
-;; use aspell instead of ispell
-(setq-default ispell-program-name "aspell"
-              ispell-extra-args '("--sug-mode=ultra"))
-
-; whitespace settings
-(require 'whitespace)
-(setq whitespace-style '(face spaces tabs newline space-mark tab-mark
-                              newline-mark lines-tail trailing))
-(setq whitespace-display-mappings
-      '((space-mark 32 [183] [46])
-        (newline-mark 10 [182 10])
-        (tab-mark 9 [9655 9] [92 9])))
-(setq whitespace-line-column 80)
-;;; nice defaults
-(setq-default apropos-do-all t
-              mouse-yank-at-point t)
-
-;;; scrolling behaviour
-(setq redisplay-dont-pause t
-      scroll-margin 1
-      scroll-step 1
-      scroll-conservatively 10000
-      scroll-preserve-screen-position 1)
-; mouse wheel scrolling
-(setq mouse-wheel-follow-mouse 't)
-(setq mouse-wheel-scroll-amount '(1 ((shift) . 1)))
-
-;; shell-mode settings
-(unless *is-a-pc*
-  (setq-default explicit-shell-file-name "/bin/bash")
-  (setq-default shell-file-name "/bin/bash"))
-;; always insert at the bottom
-(setq-default comint-scroll-to-bottom-on-input t)
-;; no duplicates in command history
-(setq-default comint-input-ignoredups t)
-;; what to run when i press enter on a line above the current prompt
-(setq-default comint-get-old-input (lambda () ""))
-;; max shell history size
-(setq-default comint-input-ring-size 1000)
-;; show all in emacs interactive output
-(setenv "PAGER" "cat")
-;; set lang to enable Chinese display in shell-mode
-(setenv "LANG" "en_US.UTF-8")
-
-;;;; Keybindings
-
-;; automatically indent after return
-(define-key global-map (kbd "RET") 'newline-and-indent)
-
-
-
-;;;; Load solarized theme
-(require 'init-solarized-emacs)
 ;; smart mode line
 (require-package 'smart-mode-line)
 (sml/setup)
 ;; load packages and configs
 (require-package 'editorconfig)
 (require-package 'pos-tip)
-(require 'init-yasnippet)
-
 (require-package 'move-text)
-
 (require-package 'highlight-escape-sequences)
+;; perspective mode
 (require-package 'perspective)
 (persp-mode t)
-(require 'init-projectile)
-
 ;;; color-identifiers-mode
 (require-package 'color-identifiers-mode)
 ;; restclient
@@ -221,4 +143,6 @@
 ;; sunrise commmander stuff
 (require-package 'sunrise-commander)
 (require-package 'sunrise-x-buttons)
+
+(provide 'init)
 ;;; init.el ends here
