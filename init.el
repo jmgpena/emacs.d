@@ -82,6 +82,7 @@
 
 (require 'init-smartparens)
 (require 'init-lisp)
+(require 'init-clojure)
 
 ;; rainbow delimiters
 (require-package 'rainbow-delimiters)
@@ -206,8 +207,6 @@
 ;; jade and stylus
 (require-package 'jade-mode)
 (require-package 'stylus-mode)
-;; clojure
-(require 'init-clojure)
 ;; Visual regexp
 (require-package 'visual-regexp)
 (define-key global-map (kbd "C-c r") 'vr/replace)

@@ -1,6 +1,22 @@
-(require-package 'clojure-mode)
+;;; init-clojure.el --- Clojure configs
+;;; Commentary:
+;;;
+;;; By jmgpena
+;;;
+;;; Code:
 
+(require-package 'clojure-mode)
+(require-package 'cljsbuild-mode)
 (require-package 'cider)
+
+(after-load 'clojure-mode
+  (add-hook 'clojure-mode-hook 'site/lisp-setup)
+  (add-hook 'clojure-mode-hook 'subword-mode))
+
+;; Use clojure-mode for clojurescript, since clojurescript-mode
+;; pulls in Slime
+(add-auto-mode 'clojure-mode "\\.cljs\\'")
+
 
 ;(define-key cider-repl-mode-map (kbd "<home>") nil)
 ;(define-key cider-repl-mode-map (kbd "C-,") 'complete-symbol)
@@ -19,9 +35,14 @@
 (setq cider-auto-select-error-buffer t)
 
 ;; Prevent the auto-display of the REPL buffer in a separate window after connection is established
-(setq cider-repl-pop-to-buffer-on-connect nil)
+;;(setq cider-repl-pop-to-buffer-on-connect nil)
 
 ;; Enable eldoc in Clojure buffers
 (add-hook 'cider-mode-hook 'cider-turn-on-eldoc-mode)
 
+ ;; nrepl isn't based on comint
+  (add-hook 'cider-repl-mode-hook
+            (lambda () (setq show-trailing-whitespace nil))))
+
 (provide 'init-clojure)
+;;; init-clojure.el ends here
