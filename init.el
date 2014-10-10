@@ -78,6 +78,10 @@
 (require 'init-css)
 (require 'init-haskell)
 (require 'init-ruby)
+(require 'init-sql)
+
+(require 'init-smartparens)
+(require 'init-lisp)
 
 ;; rainbow delimiters
 (require-package 'rainbow-delimiters)
@@ -176,22 +180,6 @@
 (define-key global-map (kbd "RET") 'newline-and-indent)
 
 
-;;;; Elisp
-(setq lisp-indent-offset nil)
-(defun imenu-elisp-sections ()
-  "Setup imenu to look for comment section in elisp files."
-  (setq imenu-prev-index-position-function nil)
-  (add-to-list 'imenu-generic-expression '("Sections" "^;;;; \\(.+\\)$" 1) t))
-
-(add-hook 'emacs-lisp-mode-hook 'imenu-elisp-sections)
-
-(define-key emacs-lisp-mode-map (kbd "C-c C-z") 'ielm)
-
-(add-hook 'emacs-lisp-mode-hook
-          (lambda ()
-            (turn-on-eldoc-mode)
-            (setq mode-name "EL")))
-
 
 ;;;; Load solarized theme
 (require 'init-solarized-emacs)
@@ -204,7 +192,7 @@
 (require 'init-yasnippet)
 
 (require-package 'move-text)
-(require 'init-smartparens)
+
 (require-package 'highlight-escape-sequences)
 (require-package 'perspective)
 (persp-mode t)
