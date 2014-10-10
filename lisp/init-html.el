@@ -1,7 +1,11 @@
-;;; init-web-mode.el --- web-mode configuration
-;;; commentary:
+;;; init-html.el --- Html related configs
+;;; Commentary:
+;;;
+;;; By jmgpena
+;;;
+;;; Code:
 
-;;; code:
+;; Use web-mode for html and html based templating
 (require-package 'web-mode)
 
 (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
@@ -36,5 +40,17 @@
 (add-hook 'emmet-mode-hook (lambda () (setq emmet-indentation 2))) ;; indent 2 spaces.
 (setq emmet-move-cursor-between-quotes t) ;; default nil
 
-(provide 'init-web-mode)
-;;; init-web-mode.el ends here
+;; use tidy
+(require-package 'tidy)
+(add-hook 'web-mode-hook (lambda () (tidy-build-menu html-mode-map)))
+
+(require-package 'tagedit)
+(after-load 'sgml-mode
+  (tagedit-add-paredit-like-keybindings)
+  (add-hook 'sgml-mode-hook (lambda () (tagedit-mode 1))))
+
+;; export buffer contents as html
+(require-package 'htmlize)
+
+(provide 'init-html)
+;;; init-html.el ends here
