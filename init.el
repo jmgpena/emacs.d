@@ -73,6 +73,7 @@
 (require 'init-javascript)
 (require 'init-php)
 (require 'init-web-mode)
+(require 'init-org)
 
 ;; rainbow delimiters
 (require-package 'rainbow-delimiters)
@@ -224,7 +225,6 @@ point reaches the beginning or end of the buffer, stop there."
 (require-package 'editorconfig)
 (require-package 'pos-tip)
 (require 'init-yasnippet)
-(require 'init-org-plus-contrib)
 (require-package 'htmlize)
 (require-package 'move-text)
 (require 'init-smartparens)

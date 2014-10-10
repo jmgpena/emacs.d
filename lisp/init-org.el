@@ -1,3 +1,10 @@
+;;; init-org.el --- Org Mode configuration
+;;; Commentary:
+;;;
+;;; By jmgpena
+;;;
+;;; Code:
+
 ;; org-mode configuration
 (require-package 'org-plus-contrib)
 
@@ -179,4 +186,5 @@
         "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"
         "pdflatex -shell-escape -interaction nonstopmode -output-directory %o %f"))
 
-(provide 'init-org-plus-contrib)
+(provide 'init-org)
+;;; init-org.el ends here
