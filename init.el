@@ -76,6 +76,7 @@
 (require 'init-nxml)
 (require 'init-html)
 (require 'init-haskell)
+(require 'init-ruby)
 
 ;; rainbow delimiters
 (require-package 'rainbow-delimiters)
@@ -224,9 +225,6 @@
 (setq flycheck-scss-executable "scss -c")
 (setq css-indent-offset 4)
 (eval-after-load 'flycheck '(setq flycheck-checkers (delq 'scss flycheck-checkers)))
-;; ruby
-(require-package 'rvm)
-(rvm-use-default)
 ;; clojure
 (require 'init-clojure)
 ;; Visual regexp
