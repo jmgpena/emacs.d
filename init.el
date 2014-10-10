@@ -75,6 +75,7 @@
 (require 'init-org)
 (require 'init-nxml)
 (require 'init-html)
+(require 'init-css)
 (require 'init-haskell)
 (require 'init-ruby)
 
@@ -217,14 +218,6 @@
 ;; jade and stylus
 (require-package 'jade-mode)
 (require-package 'stylus-mode)
-;; sass
-(require-package 'rainbow-mode)
-(rainbow-mode +1)
-(require-package 'scss-mode)
-(setq-default scss-compile-at-save nil)
-(setq flycheck-scss-executable "scss -c")
-(setq css-indent-offset 4)
-(eval-after-load 'flycheck '(setq flycheck-checkers (delq 'scss flycheck-checkers)))
 ;; clojure
 (require 'init-clojure)
 ;; Visual regexp
