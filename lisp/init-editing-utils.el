@@ -280,7 +280,7 @@
 ;;; Guide key mode
 ;;;----------------------------------------------------------------------------
 (require-package 'guide-key)
-(setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x 5" "C-c ;" "C-c ; f" "C-c ' f" "C-x n" "C-c p" "C-x 8" "C-x v"))
+(setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x 5" "C-c ;" "C-c ; f" "C-c ' f" "C-x n" "C-c p" "C-x 8" "C-x v" "C-c h"))
 (guide-key-mode 1)
 
 ;; reload changed files
