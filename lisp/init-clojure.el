@@ -11,12 +11,35 @@
 
 (after-load 'clojure-mode
   (add-hook 'clojure-mode-hook 'site/lisp-setup)
-  (add-hook 'clojure-mode-hook 'subword-mode))
+  (add-hook 'clojure-mode-hook 'subword-mode)
+  (font-lock-add-keywords
+   'clojure-mode `(("(\\(fn\\)[\[[:space:]]"
+                    (0 (progn (compose-region (match-beginning 1)
+                                              (match-end 1) "λ")
+                              nil)))))
+  (font-lock-add-keywords
+   'clojure-mode `(("\\(#\\)("
+                    (0 (progn (compose-region (match-beginning 1)
+                                              (match-end 1) "ƒ")
+                              nil)))))
+  (font-lock-add-keywords
+   'clojure-mode `(("\\(#\\){"
+                    (0 (progn (compose-region (match-beginning 1)
+                                              (match-end 1) "∈")
+                              nil))))))
 
 ;; Use clojure-mode for clojurescript, since clojurescript-mode
 ;; pulls in Slime
 (add-auto-mode 'clojure-mode "\\.cljs\\'")
 
+;;; clojure refactor mode
+(require-package 'clj-refactor)
+(add-hook 'clojure-mode-hook (lambda ()
+                               (clj-refactor-mode 1)
+                               (cljr-add-keybindings-with-prefix "C-c C-m")))
+
+(define-key clojure-mode-map (kbd "C-:") 'cljr-cycle-stringlike)
+(define-key clojure-mode-map (kbd "C->") 'cljr-cycle-coll)
 
 ;(define-key cider-repl-mode-map (kbd "<home>") nil)
 ;(define-key cider-repl-mode-map (kbd "C-,") 'complete-symbol)
