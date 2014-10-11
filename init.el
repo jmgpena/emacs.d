@@ -103,6 +103,7 @@
 (require 'init-spelling)
 (require 'init-yasnippet)
 (require 'init-projectile)
+(require 'init-speedbar)
 
 ;;;----------------------------------------------------------------------------
 ;;; Packages without configuration
@@ -138,8 +139,6 @@
 ;; company (better autocompletion)
 (require-package 'company)
 (global-company-mode 1)
-;; sr-speedbar
-(require-package 'sr-speedbar)
 ;; sunrise commmander stuff
 (require-package 'sunrise-commander)
 (require-package 'sunrise-x-buttons)
