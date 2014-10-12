@@ -71,6 +71,7 @@
 (require 'init-uniquify)
 (require 'init-ibuffer)
 (require 'init-flycheck)
+(require 'init-smartparens)
 
 (require 'init-recentf)
 ;(require 'init-ido)
@@ -96,7 +97,6 @@
 (require 'init-ruby)
 (require 'init-sql)
 
-(require 'init-smartparens)
 (require 'init-lisp)
 (require 'init-clojure)
 (require 'init-locales)
