@@ -19,6 +19,7 @@
  column-number-mode t
  delete-selection-mode t
  delete-selection-mode t
+ ediff-diff-options "-w"
  ediff-split-window-function 'split-window-horizontally
  ediff-window-setup-function 'ediff-setup-windows-plain
  indent-tabs-mode nil
@@ -38,6 +39,9 @@
  ring-bell-function 'ignore
  apropos-do-all t
  mouse-yank-at-point t)
+
+;; Transparently open compressed files
+(auto-compression-mode t)
 
 ;; set TAB and indention
 (setq-default tab-width 4)
@@ -281,6 +285,8 @@
 ;;;----------------------------------------------------------------------------
 (require-package 'guide-key)
 (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x 5" "C-c ;" "C-c ; f" "C-c ' f" "C-x n" "C-c p" "C-x 8" "C-x v" "C-c h"))
+(setq guide-key/recursive-key-sequence-flag t)
+(setq guide-key/popup-window-position 'bottom)
 (guide-key-mode 1)
 
 ;; reload changed files
