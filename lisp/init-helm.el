@@ -7,7 +7,8 @@
 
 (require-package 'helm)
 (require 'helm-config)
-(require-package 'helm-projectile)
+(require-package 'projectile)
+(require 'helm-projectile)
 (require-package 'helm-descbinds)
 
 (when (executable-find "curl")
@@ -45,6 +46,9 @@
 (define-key helm-command-map (kbd "g")     'helm-do-grep)
 (define-key helm-command-map (kbd "C-c w") 'helm-wikipedia-suggest)
 (define-key helm-command-map (kbd "SPC")   'helm-all-mark-rings)
+
+;; helm-projectile
+(helm-projectile-on)
 
 ;; helm interface to ag
 (require-package 'ag)
