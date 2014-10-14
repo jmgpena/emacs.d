@@ -5,6 +5,8 @@
 ;;;
 ;;; Code:
 
+(require-package 'wgrep)
+
 (setq-default grep-highlight-matches t
               grep-scroll-output t)
 
@@ -14,6 +16,8 @@
 (when (executable-find "ag")
   (require-package 'ag)
   (require-package 'wgrep-ag)
+  (autoload 'wgrep-ag-setup "wgrep-ag")
+  (add-hook 'ag-mode-hook 'wgrep-ag-setup)
   (setq-default ag-highlight-search t)
   (global-set-key (kbd "M-?") 'ag-project))
 
