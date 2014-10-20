@@ -127,8 +127,7 @@
 (defun site/emacs-lisp-setup ()
   "Enable features useful when working with elisp."
   (elisp-slime-nav-mode t)
-  (set-up-hippie-expand-for-elisp)
-  (ac-emacs-lisp-mode-setup))
+  (set-up-hippie-expand-for-elisp))
 
 (defconst site/elispy-modes
   '(emacs-lisp-mode ielm-mode)

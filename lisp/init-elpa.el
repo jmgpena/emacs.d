@@ -59,6 +59,7 @@ re-downloaded in order to locate PACKAGE."
 
 ;; initialize package system
 (package-initialize)
+
 (unless
     (and
      (file-exists-p "~/.emacs.d/elpa/archives/melpa")
@@ -69,26 +70,31 @@ re-downloaded in order to locate PACKAGE."
 
 ;;  use fullframe for package list
 (require-package 'fullframe)
-(fullframe list-packages quit-window)
+;;(fullframe list-packages quit-window)
 
 ;; adjust the display of the package list
 (require-package 'cl-lib)
 (require 'cl-lib)
 
-(defun site/set-tabulated-list-column-width (col-name width)
-  "Set any column with name COL-NAME to the given WIDTH."
-  (cl-loop for column across tabulated-list-format
-           when (string= col-name (car column))
-           do (setf (elt column 1) width)))
+;; (defun site/set-tabulated-list-column-width (col-name width)
+;;   "Set any column with name COL-NAME to the given WIDTH."
+;;   (cl-loop for column across tabulated-list-format
+;;            when (string= col-name (car column))
+;;            do (setf (elt column 1) width)))
 
-(defun site/maybe-widen-package-menu-columns ()
-  "Widen some columns of the package menu table to avoid truncation."
-  (when (boundp 'tabulated-list-format)
-    (site/set-tabulated-list-column-width "Version" 13)
-    (let ((longest-archive-name (apply 'max (mapcar 'length (mapcar 'car package-archives)))))
-      (site/set-tabulated-list-column-width "Archive" longest-archive-name))))
+;; (defun site/maybe-widen-package-menu-columns ()
+;;   "Widen some columns of the package menu table to avoid truncation."
+;;   (when (boundp 'tabulated-list-format)
+;;     (site/set-tabulated-list-column-width "Version" 13)
+;;     (let ((longest-archive-name (apply 'max (mapcar 'length (mapcar 'car package-archives)))))
+;;       (site/set-tabulated-list-column-width "Archive" longest-archive-name))))
 
-(add-hook 'package-menu-mode-hook 'site/maybe-widen-package-menu-columns)
+;;(add-hook 'package-menu-mode-hook 'site/maybe-widen-package-menu-columns)
+
+;; paradox package list replacement
+(require-package 'paradox)
+;; (setq paradox-github-token "08ceb37da5d8e34cfa6d2f74619d7a54fa0e1763"
+;;       paradox-column-width-package 36)
 
 (provide 'init-elpa)
 ;;; init-elpa.el ends here

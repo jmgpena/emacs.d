@@ -77,7 +77,7 @@
 ;(require 'init-ido)
 (require 'init-helm)
 (require 'init-hippie-expand)
-(require 'init-auto-complete)
+;;(require 'init-auto-complete)
 (require 'init-windows)
 ;;(require 'init-sessions)
 (require 'init-fonts)
@@ -139,7 +139,7 @@
 (define-key global-map (kbd "C-c m") 'vr/mc-mark)
 ;; company (better autocompletion)
 (require-package 'company)
-(global-company-mode 1)
+(add-hook 'after-init-hook 'global-company-mode)
 ;; sunrise commmander stuff
 (require-package 'sunrise-commander)
 (require-package 'sunrise-x-buttons)
