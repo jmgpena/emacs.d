@@ -9,7 +9,6 @@
 (require-package 'org-plus-contrib)
 
 (require 'org-habit)
-(require 'org-special-blocks)
 
 (setq org-completion-use-ido t)
 (setq org-startup-indented t)
