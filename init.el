@@ -143,6 +143,12 @@
 ;; sunrise commmander stuff
 (require-package 'sunrise-commander)
 (require-package 'sunrise-x-buttons)
+;; elfeed temp config
+(require-package 'elfeed)
+(setq elfeed-db-directory "~/Dropbox/org/elfeed"
+      elfeed-feeds
+      '("http://nullprogram.com/feed"))
+(global-set-key (kbd "C-x w") 'elfeed)
 
 (provide 'init)
 ;;; init.el ends here
