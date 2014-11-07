@@ -11,5 +11,9 @@
     (set-face-attribute
      'default nil :font (concat config:font-family "-" config:font-size)))
 
+;; setup fallback font
+(set-fontset-font "fontset-default" nil
+                  (font-spec :size 20 :name "Symbola"))
+
 (provide 'init-fonts)
 ;;; init-fonts.el ends here
