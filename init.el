@@ -121,9 +121,6 @@
 (require-package 'pos-tip)
 (require-package 'move-text)
 (require-package 'highlight-escape-sequences)
-;; perspective mode
-(require-package 'perspective)
-(persp-mode t)
 ;;; color-identifiers-mode
 (require-package 'color-identifiers-mode)
 ;; restclient
@@ -144,6 +141,9 @@
 ;; sunrise commmander stuff
 (require-package 'sunrise-commander)
 (require-package 'sunrise-x-buttons)
+;; hungry-delete
+(require-package 'hungry-delete)
+(global-hungry-delete-mode)
 
 (provide 'init)
 ;;; init.el ends here
