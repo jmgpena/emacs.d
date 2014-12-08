@@ -325,5 +325,10 @@ point reaches the beginning or end of the buffer, stop there."
 (global-set-key [remap move-beginning-of-line]
                 'smarter-move-beginning-of-line)
 
+;;; Agressive indent mode
+(require-package 'aggressive-indent)
+(global-aggressive-indent-mode 1)
+;; (add-to-list 'aggressive-indent-excluded-modes 'html-mode)
+
 (provide 'init-editing-utils)
 ;;; init-editing-utils.el ends here
