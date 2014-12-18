@@ -68,28 +68,9 @@ re-downloaded in order to locate PACKAGE."
      (file-exists-p "~/.emacs.d/elpa/archives/marmalade"))
   (package-refresh-contents))
 
-;;  use fullframe for package list
-(require-package 'fullframe)
-;;(fullframe list-packages quit-window)
-
-;; adjust the display of the package list
-(require-package 'cl-lib)
-(require 'cl-lib)
-
-;; (defun site/set-tabulated-list-column-width (col-name width)
-;;   "Set any column with name COL-NAME to the given WIDTH."
-;;   (cl-loop for column across tabulated-list-format
-;;            when (string= col-name (car column))
-;;            do (setf (elt column 1) width)))
-
-;; (defun site/maybe-widen-package-menu-columns ()
-;;   "Widen some columns of the package menu table to avoid truncation."
-;;   (when (boundp 'tabulated-list-format)
-;;     (site/set-tabulated-list-column-width "Version" 13)
-;;     (let ((longest-archive-name (apply 'max (mapcar 'length (mapcar 'car package-archives)))))
-;;       (site/set-tabulated-list-column-width "Archive" longest-archive-name))))
-
-;;(add-hook 'package-menu-mode-hook 'site/maybe-widen-package-menu-columns)
+;; load use-package from melpa
+(require-package 'use-package)
+(require 'use-package)
 
 ;; paradox package list replacement
 (require-package 'paradox)

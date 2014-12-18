@@ -111,7 +111,7 @@
 ;;; Packages without configuration
 ;;;----------------------------------------------------------------------------
 ;; rainbow delimiters
-(require-package 'rainbow-delimiters)
+(use-package rainbow-delimiters :ensure t)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 ;; smart mode line
 (require-package 'smart-mode-line)
