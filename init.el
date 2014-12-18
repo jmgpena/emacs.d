@@ -146,6 +146,11 @@
 (global-hungry-delete-mode)
 ;; karma runner support
 (require-package 'karma)
+;; org-journal
+(use-package org-journal
+  :ensure t
+  :init
+  (setq org-journal-dir "~/Dropbox/org/journal"))
 
 (provide 'init)
 ;;; init.el ends here
