@@ -144,6 +144,8 @@
 ;; hungry-delete
 (require-package 'hungry-delete)
 (global-hungry-delete-mode)
+;; karma runner support
+(require-package 'karma)
 
 (provide 'init)
 ;;; init.el ends here
