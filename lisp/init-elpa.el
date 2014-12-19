@@ -31,7 +31,7 @@
 (add-to-list 'package-archives
              '("SC" . "http://joseito.republika.pl/sunrise-commander/"))
 (add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/") t)
+             '("marmalade" . "https://marmalade-repo.org/packages/") t)
 
 ;; If gpg cannot be found, signature checking will fail, so we
 ;; conditionally enable it according to whether gpg is available. We
