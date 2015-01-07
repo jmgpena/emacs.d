@@ -151,6 +151,12 @@
   :ensure t
   :init
   (setq org-journal-dir "~/Dropbox/org/journal"))
+;; ledger-mode
+(use-package ledger-mode
+  :ensure t
+  :mode "\\.ledger\\'"
+  :init
+  (setq ledger-post-auto-adjust-amounts t))
 
 (provide 'init)
 ;;; init.el ends here
