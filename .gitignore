@@ -3,7 +3,7 @@ auto-save-list
 saved-places
 .recentf
 *.elc
-elpa
+/elpa/**
 *~
 /custom.el*
 /.emacs.desktop

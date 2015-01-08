@@ -141,9 +141,16 @@
 (global-set-key (kbd "C-.") 'set-mark-command)
 (global-set-key (kbd "C-x C-.") 'pop-global-mark)
 
-(require-package 'ace-jump-mode)
-(global-set-key (kbd "C-;") 'ace-jump-mode)
-(global-set-key (kbd "C-:") 'ace-jump-word-mode)
+;; searching and jumping around
+(use-package ace-jump-mode
+  :ensure
+  :bind (("C-;" . ace-jump-mode)
+         ("C-:" . ace-jump-word-mode)))
+(use-package helm-swoop :ensure)
+(use-package ace-isearch
+  :ensure
+  :init
+  (global-ace-isearch-mode +1))
 
 (require-package 'multiple-cursors)
 ;; multiple-cursors
