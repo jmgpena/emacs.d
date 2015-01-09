@@ -151,6 +151,8 @@
   :ensure t
   :init
   (setq org-journal-dir "~/Dropbox/org/journal"))
+;; vagrant
+(use-package vagrant :ensure t)
 ;; ledger-mode
 (use-package ledger-mode
   :ensure t
