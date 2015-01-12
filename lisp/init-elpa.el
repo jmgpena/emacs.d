@@ -30,8 +30,8 @@
              '("org" . "http://orgmode.org/elpa/") t)
 (add-to-list 'package-archives
              '("SC" . "http://joseito.republika.pl/sunrise-commander/"))
-(add-to-list 'package-archives
-             '("marmalade" . "https://marmalade-repo.org/packages/") t)
+;; (add-to-list 'package-archives
+;;              '("marmalade" . "https://marmalade-repo.org/packages/") t)
 
 ;; If gpg cannot be found, signature checking will fail, so we
 ;; conditionally enable it according to whether gpg is available. We
@@ -68,8 +68,10 @@ re-downloaded in order to locate PACKAGE."
      (file-exists-p "~/.emacs.d/elpa/archives/marmalade"))
   (package-refresh-contents))
 
-;; load use-package from melpa
-(require-package 'use-package)
+;; bootstrap use-package
+(unless (package-installed-p 'use-package)
+  (package-refresh-contents)
+  (package-install 'use-package))
 (require 'use-package)
 
 ;; paradox package list replacement
