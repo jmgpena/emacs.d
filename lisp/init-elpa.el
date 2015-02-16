@@ -22,6 +22,7 @@
 
 ;; use package.el from emacs
 (require 'package)
+(setq package-check-signature nil)
 
 ;; Define package archives
 (add-to-list 'package-archives
@@ -30,19 +31,19 @@
              '("org" . "http://orgmode.org/elpa/") t)
 (add-to-list 'package-archives
              '("SC" . "http://joseito.republika.pl/sunrise-commander/"))
-;; (add-to-list 'package-archives
-;;              '("marmalade" . "https://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives
+             '("marmalade" . "https://marmalade-repo.org/packages/") t)
 
 ;; If gpg cannot be found, signature checking will fail, so we
 ;; conditionally enable it according to whether gpg is available. We
 ;; re-run this check once $PATH has been configured
-(defun site/package-maybe-enable-signatures ()
-  "Enable package signatures if gpg is present."
-  (setq package-check-signature (when (executable-find "gpg") 'allow-unsigned)))
+;; (defun site/package-maybe-enable-signatures ()
+;;   "Enable package signatures if gpg is present."
+;;   (setq package-check-signature (when (executable-find "gpg") 'allow-unsigned)))
 
-(site/package-maybe-enable-signatures)
-(after-load 'init-exec-path
-  (site/package-maybe-enable-signatures))
+;; (site/package-maybe-enable-signatures)
+;; (after-load 'init-exec-path
+;;   (site/package-maybe-enable-signatures))
 
 ;; On-demand installation of packages
 (defun require-package (package &optional min-version no-refresh)
