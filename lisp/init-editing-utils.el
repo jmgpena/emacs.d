@@ -134,6 +134,9 @@
 ;; To be able to M-x without meta
 (global-set-key (kbd "C-x C-m") 'execute-extended-command)
 
+;; Bind revert-buffer to C-x C-r
+(global-set-key (kbd "C-x C-r") (lambda () (interactive) (revert-buffer nil t)))
+
 ;; Vimmy alternatives to M-^ and C-u M-^
 (global-set-key (kbd "C-c j") 'join-line)
 (global-set-key (kbd "C-c J") (lambda () (interactive) (join-line 1)))
