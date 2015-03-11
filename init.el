@@ -106,6 +106,7 @@
 (require 'init-projectile)
 (require 'init-speedbar)
 (require 'init-elfeed)
+(require 'init-hydra)
 
 ;;;----------------------------------------------------------------------------
 ;;; Packages without configuration
