@@ -116,6 +116,7 @@
 ;; smart mode line
 (require-package 'smart-mode-line)
 (sml/setup)
+(sml/apply-theme 'light)
 ;; load packages and configs
 (require-package 'editorconfig)
 (require-package 'pos-tip)
