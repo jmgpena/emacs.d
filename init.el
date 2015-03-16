@@ -128,6 +128,8 @@
 ;; restclient
 (require-package 'restclient)
 (add-to-list 'auto-mode-alist '("\\.restclient$" . restclient-mode))
+;; lua
+(use-package lua-mode :ensure t)
 ;; jade and stylus
 (require-package 'jade-mode)
 (require-package 'stylus-mode)
