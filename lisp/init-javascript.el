@@ -51,9 +51,9 @@
  ;; jshint does not report this?????
  js2-strict-trailing-comma-warning t)
 
-(add-hook 'js2-mode-hook (lambda ()
-                             (flycheck-select-checker 'javascript-jshint)
-                             (flycheck-mode)))
+;; (add-hook 'js2-mode-hook (lambda ()
+;;                              (flycheck-select-checker 'javascript-jshint)
+;;                              (flycheck-mode)))
 (add-hook 'js2-mode-hook 'color-identifiers-mode)
 
 ;; Use lambda for anonymous font
@@ -104,7 +104,7 @@ globals from it to add them to js2-additional-externs."
         (when (file-readable-p jshintrc)
             (setq flycheck-jshintrc jshintrc))))
 
-(add-hook 'js2-init-hook 'jp-js2-flycheck-jshintrc)
+;;(add-hook 'js2-init-hook 'jp-js2-flycheck-jshintrc)
 
 ;; auto-completion
 ;(require-package 'ac-js2)
