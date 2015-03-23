@@ -163,6 +163,7 @@
   :mode "\\.ledger\\'"
   :init
   (setq ledger-post-auto-adjust-amounts t))
+(use-package sx :ensure t)
 
 (provide 'init)
 ;;; init.el ends here
