@@ -125,6 +125,7 @@
 (require-package 'highlight-escape-sequences)
 ;;; color-identifiers-mode
 (require-package 'color-identifiers-mode)
+(use-package rainbow-identifiers :ensure t)
 ;; restclient
 (require-package 'restclient)
 (add-to-list 'auto-mode-alist '("\\.restclient$" . restclient-mode))

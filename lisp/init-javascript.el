@@ -54,7 +54,7 @@
 ;; (add-hook 'js2-mode-hook (lambda ()
 ;;                              (flycheck-select-checker 'javascript-jshint)
 ;;                              (flycheck-mode)))
-(add-hook 'js2-mode-hook 'color-identifiers-mode)
+(add-hook 'js2-mode-hook 'rainbow-identifiers-mode)
 
 ;; Use lambda for anonymous font
 (font-lock-add-keywords
