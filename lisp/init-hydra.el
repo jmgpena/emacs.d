@@ -61,5 +61,25 @@ _h_   _l_   _o_k        _y_ank
   ("o" nil nil))
 (global-set-key (kbd "C-x SPC") 'hydra-rectangle/body)
 
+;; info-mode hydra
+(defun ora-open-info (topic bname)
+  "Open info on TOPIC in BNAME."
+  (if (get-buffer bname)
+      (progn
+        (switch-to-buffer bname)
+        (unless (string-match topic Info-current-file)
+          (Info-goto-node (format "(%s)" topic))))
+    (info topic bname)))
+
+(defhydra hydra-info-to (:hint nil :color teal)
+  "
+_o_rg e_l_isp _e_macs _h_yperspec"
+  ("o" (ora-open-info "org" "*org info*"))
+  ("l" (ora-open-info "elisp" "*elisp info*"))
+  ("e" (ora-open-info "emacs" "*emacs info*"))
+  ("h" (ora-open-info "gcl" "*hyperspec*")))
+
+(define-key Info-mode-map "t" 'hydra-info-to/body)
+
 (provide 'init-hydra)
 ;;; init-hydra ends here
