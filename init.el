@@ -165,6 +165,12 @@
   :init
   (setq ledger-post-auto-adjust-amounts t))
 (use-package sx :ensure t)
+(use-package todotxt
+  :ensure t
+  :init
+  (progn
+    (setq todotxt-file "~/Dropbox/org/todo.txt")
+    (global-set-key (kbd "C-x t") 'todotxt)))
 
 (provide 'init)
 ;;; init.el ends here
