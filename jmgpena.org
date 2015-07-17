@@ -1,0 +1,266 @@
+* Introduction
+* User and System settings
+
+Set the user name and email address. These are the default
+personalization settings for emacs.
+
+#+BEGIN_SRC emacs-lisp
+  (setq user-full-name "Jorge Pena"
+        user-mail-address "jorge@jmgpena.net")
+#+END_SRC
+
+The default directory is a tricky one and I think is only needed for
+windows. I need to check this and make sure to only use it when
+needed.
+
+#+BEGIN_SRC emacs-lisp
+  (setq-default default-directory "~/")
+  (cd "~/")
+#+END_SRC
+
+Update the default gc threshold to 20MB as it is more in line with
+current machines capabilities.
+
+#+BEGIN_SRC emacs-lisp
+  (setq gc-cons-threshold 20000000)
+#+END_SRC
+
+Save the emacs file backups to the system temporary directory. This
+keeps project folders clean from emacs backup files, but we can get
+them if there is a need.
+
+#+BEGIN_SRC emacs-lisp
+  (setq backup-directory-alist
+        `((".*" . ,temporary-file-directory)))
+  (setq auto-save-file-name-transforms
+        `((".*" ,temporary-file-directory t)))
+#+END_SRC
+
+Keep emacs Custom-settings in separate file
+
+#+BEGIN_SRC emacs-lisp
+  (let ((custom-file-name (expand-file-name "custom.el" user-emacs-directory)))
+    (setq custom-file custom-file-name)
+    (when (file-exists-p custom-file-name)
+      (load custom-file-name)))
+#+END_SRC
+
+Keep history of the last opened buffers using recentf package (bundled
+with emacs).
+
+#+BEGIN_SRC emacs-lisp
+  (require 'recentf)
+  ;; save the .recentf file to .emacs.d/
+  (setq recentf-save-file (concat user-emacs-directory ".recentf"))
+  ;; enable recent files mode.
+  (recentf-mode t)
+  ;; 1000 files ought to be enough.
+  (setq recentf-max-saved-items 1000
+        recentf-exclude '("/tmp/" "/ssh:"))
+#+END_SRC
+
+* Package Initialization
+
+#+BEGIN_SRC emacs-lisp
+  ;; use package.el from emacs
+  (require 'package)
+  (setq package-check-signature nil)
+
+  ;; Define package archives
+  (add-to-list 'package-archives
+               '("melpa" . "http://melpa.org/packages/") t)
+  (add-to-list 'package-archives
+               '("org" . "http://orgmode.org/elpa/") t)
+  (add-to-list 'package-archives
+               '("SC" . "http://joseito.republika.pl/sunrise-commander/"))
+  (add-to-list 'package-archives
+               '("marmalade" . "https://marmalade-repo.org/packages/") t)
+
+  ;; If gpg cannot be found, signature checking will fail, so we
+  ;; conditionally enable it according to whether gpg is available. We
+  ;; re-run this check once $PATH has been configured
+  ;; (defun site/package-maybe-enable-signatures ()
+  ;;   "Enable package signatures if gpg is present."
+  ;;   (setq package-check-signature (when (executable-find "gpg") 'allow-unsigned)))
+
+  ;; (site/package-maybe-enable-signatures)
+  ;; (after-load 'init-exec-path
+  ;;   (site/package-maybe-enable-signatures))
+
+  ;; initialize package system
+  (package-initialize)
+
+  (unless
+      (and
+       (file-exists-p "~/.emacs.d/elpa/archives/melpa")
+       (file-exists-p "~/.emacs.d/elpa/archives/org")
+       (file-exists-p "~/.emacs.d/elpa/archives/SC")
+       (file-exists-p "~/.emacs.d/elpa/archives/marmalade"))
+    (package-refresh-contents))
+
+  ;; bootstrap use-package
+  (unless (package-installed-p 'use-package)
+    (package-refresh-contents)
+    (package-install 'use-package))
+  (require 'use-package)
+
+  ;; paradox package list replacement
+  (use-package paradox :ensure t)
+  ;; (setq paradox-github-token "08ceb37da5d8e34cfa6d2f74619d7a54fa0e1763"
+  ;;       paradox-column-width-package 36)
+#+END_SRC
+
+* Gui and Appearence
+** Basic appearence
+
+Disable the emacs startup screen and go directly to the scratch
+buffer. Also disable the toolbar and scrollbar and other gui features.
+
+#+BEGIN_SRC emacs-lisp
+  (setq inhibit-startup-screen t)
+  (setq use-file-dialog nil)
+  (setq use-dialog-box nil)
+  (setq indicate-empty-lines t)
+  (dolist (mode '( tool-bar-mode scroll-bar-mode))
+    (when (fboundp mode) (funcall mode -1)))
+
+  (let ((no-border '(internal-border-width . 0)))
+    (add-to-list 'default-frame-alist no-border)
+    (add-to-list 'initial-frame-alist no-border))
+#+END_SRC
+
+** Theme
+
+#+BEGIN_SRC emacs-lisp
+(use-package base16-theme :ensure t)
+(load-theme 'base16-tomorrow-dark t)
+#+END_SRC
+
+* Basic packages with global functionality
+** Helm
+
+#+BEGIN_SRC emacs-lisp
+  (use-package helm :ensure t)
+  (require 'helm-config)
+
+  (when (executable-find "curl")
+    (setq helm-google-suggest-use-curl-p t))
+
+  ;; See https://github.com/bbatsov/prelude/pull/670 for a detailed
+  ;; discussion of these options.
+  (setq helm-quick-update                     t
+        helm-split-window-in-side-p           t
+        helm-buffers-fuzzy-matching           t
+        helm-move-to-line-cycle-in-source     t
+        helm-ff-search-library-in-sexp        t
+        helm-ff-file-name-history-use-recentf t)
+
+  (helm-mode 1)
+
+  (use-package helm-descbinds :ensure t)
+  (helm-descbinds-mode)
+
+  ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
+  ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
+  ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
+  (global-set-key (kbd "C-c h") 'helm-command-prefix)
+  (global-unset-key (kbd "C-x c"))
+  (global-set-key (kbd "M-x") 'helm-M-x)
+  (global-set-key (kbd "C-x b") 'helm-mini)
+  (global-set-key (kbd "M-y") 'helm-show-kill-ring)
+  (global-set-key (kbd "C-x C-f") 'helm-find-files)
+
+  ;; grep in helm
+  (when (executable-find "ack-grep")
+    (setq helm-grep-default-command "ack-grep -Hn --no-group --no-color %e %p %f"
+          helm-grep-default-recurse-command "ack-grep -H --no-group --no-color %e %p %f"))
+
+  (define-key helm-command-map (kbd "o")     'helm-occur)
+  (define-key helm-command-map (kbd "g")     'helm-do-grep)
+  (define-key helm-command-map (kbd "C-c w") 'helm-wikipedia-suggest)
+  (define-key helm-command-map (kbd "SPC")   'helm-all-mark-rings)
+
+  ;; helm interface to ag
+  ;(require-package 'ag)
+  ;(require-package 'helm-ag)
+
+  ;(setq helm-ag-base-command "ag --nocolor --nogroup --ignore-case")
+  ;(setq helm-ag-command-option "--all-text")
+  ;(setq helm-ag-insert-at-point 'symbol)
+#+END_SRC
+** Smart Mode Line
+
+Better mode line with nice defaults.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package smart-mode-line :ensure t)
+  (sml/setup)
+  (sml/apply-theme 'light)
+#+END_SRC
+
+* Org Mode
+
+Use the latest version of org-mode.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package org-plus-contrib :ensure t)
+#+END_SRC
+
+Update org to insert elisp blocks more easily. Possibly improve the
+default abbreviations later...
+
+#+BEGIN_SRC emacs-lisp
+  (setq org-structure-template-alist
+        '(
+          ("s" "#+BEGIN_SRC ?\n\n#+END_SRC" "<src lang=\"?\">\n\n</src>")
+          ("l" "#+BEGIN_SRC emacs-lisp\n?\n#+END_SRC" "<src lang=\"emacs-lisp\">\n?\n</src>")
+          ("e" "#+BEGIN_EXAMPLE\n?\n#+END_EXAMPLE" "<example>\n?\n</example>")
+          ("q" "#+BEGIN_QUOTE\n?\n#+END_QUOTE" "<quote>\n?\n</quote>")
+          ("v" "#+BEGIN_VERSE\n?\n#+END_VERSE" "<verse>\n?\n</verse>")
+          ("V" "#+BEGIN_VERBATIM\n?\n#+END_VERBATIM" "<verbatim>\n?\n</verbatim>")
+          ("c" "#+BEGIN_CENTER\n?\n#+END_CENTER" "<center>\n?\n</center>")
+          ("x" "#+BEGIN_LaTeX\n?\n#+END_LaTeX" "<literal style=\"latex\">\n?\n</literal>")
+          ("L" "#+LaTeX: " "<literal style=\"latex\">?</literal>")
+          ("h" "#+BEGIN_HTML\n?\n#+END_HTML" "<literal style=\"html\">\n?\n</literal>")
+          ("H" "#+HTML: " "<literal style=\"html\">?</literal>")
+          ("a" "#+BEGIN_ASCII\n?\n#+END_ASCII" "")
+          ("A" "#+ASCII: " "")
+          ("i" "#+INDEX: ?" "#+INDEX: ?")
+          ("I" "#+INCLUDE: %file ?" "<include file=%file markup=\"?\">")))
+#+END_SRC
+
+* Programming Support
+** Common editing
+
+Use rainbow delimiters to help with balancing parameters.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package rainbow-delimiters :ensure t)
+  (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
+#+END_SRC
+
+** Version Control
+
+Set the handled backends list to a smaller set with different order.
+
+#+BEGIN_SRC emacs-lisp
+  (setq vc-handled-backends '(Git Hg))
+#+END_SRC
+
+Add git-gutter mode to highlight changes on the files while you are editing.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package git-gutter+
+    :ensure t
+    :config
+    (global-git-gutter+-mode t))
+#+END_SRC
+
+Magit mode for emacs.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package magit :ensure t)
+  (global-set-key (kbd "C-x m") 'magit-status)
+#+END_SRC
+
+** Elisp
