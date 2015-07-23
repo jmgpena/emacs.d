@@ -229,6 +229,18 @@ default abbreviations later...
           ("I" "#+INCLUDE: %file ?" "<include file=%file markup=\"?\">")))
 #+END_SRC
 
+Add my personal org files to the agenda list.
+
+#+BEGIN_SRC emacs-lisp
+  (global-set-key (kbd "C-'") 'org-cycle-agenda-files)
+  (when (file-exists-p "~/Dropbox/org")
+    (setq org-directory "~/Dropbox/org")
+    (setq org-default-notes-file (concat org-directory "/wip.org"))
+    (setq org-agenda-files '("~/Dropbox/org/wip.org"
+                             "~/Dropbox/org/ref.org"
+                             "~/Dropbox/org/dailylog.org")))
+#+END_SRC
+
 * Programming Support
 ** Common editing
 
@@ -241,13 +253,11 @@ Use rainbow delimiters to help with balancing parameters.
 
 ** Version Control
 
-Set the handled backends list to a smaller set with different order.
+Add git-gutter+ mode to highlight changes on the files while you are
+editing.
 
-#+BEGIN_SRC emacs-lisp
-  (setq vc-handled-backends '(Git Hg))
-#+END_SRC
-
-Add git-gutter mode to highlight changes on the files while you are editing.
+Consider using also git-gutter-fringe+ (add indicators on the fringe
+instead of buffer margin.
 
 #+BEGIN_SRC emacs-lisp
   (use-package git-gutter+
