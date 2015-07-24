@@ -14,6 +14,17 @@
   (unless (>= emacs-major-version minver)
     (error "Your Emacs is too old -- this config requries v%s or higher!" minver)))
 
+;; locale settings and coding
+(setq system-time-locale "C")
+(setq locale-coding-system 'utf-8-unix)
+(prefer-coding-system 'utf-8-unix)
+(set-default-coding-systems 'utf-8-unix)
+(set-terminal-coding-system 'utf-8-unix)
+(set-keyboard-coding-system 'utf-8-unix)
+(set-selection-coding-system 'utf-8-unix)
+;; set environment coding system
+(set-language-environment "UTF-8")
+
 (org-babel-load-file "~/.emacs.d/jmgpena.org")
 
 ;; System type constants

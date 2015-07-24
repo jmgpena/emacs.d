@@ -1,6 +1,20 @@
 * Introduction
 * User and System settings
 
+Set emacs to use utf-8 for everything.
+
+#+BEGIN_SRC emacs-lisp
+(setq system-time-locale "C")
+(setq locale-coding-system 'utf-8-unix)
+(prefer-coding-system 'utf-8-unix)
+(set-default-coding-systems 'utf-8-unix)
+(set-terminal-coding-system 'utf-8-unix)
+(set-keyboard-coding-system 'utf-8-unix)
+(set-selection-coding-system 'utf-8-unix)
+;; set environment coding system
+(set-language-environment "UTF-8")
+#+END_SRC
+
 Set the user name and email address. These are the default
 personalization settings for emacs.
 
@@ -351,7 +365,9 @@ Default prettify symbols list for lisp modes:
 
 #+BEGIN_SRC emacs-lisp
   (defconst lisp--prettify-symbols-alist
-    '(("lambda" . ?λ)))
+    '(("lambda" . ?\λ)
+      (">=" . ?≥)
+      ("<=" . ?≤)))
 #+END_SRC
 
 ** Version Control
