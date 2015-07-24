@@ -138,6 +138,31 @@ buffer. Also disable the toolbar and scrollbar and other gui features.
 
 * Basic Editing Configuration
 
+Default settings:
+
+#+BEGIN_SRC emacs-lisp
+  (setq-default
+   cursor-type 'bar
+   bookmark-default-file (expand-file-name ".bookmarks.el" user-emacs-directory)
+   buffers-menu-max-size 30
+   case-fold-search t                     ; search case insensitive
+   line-number-mode t
+   column-number-mode t
+   make-backup-files nil
+   save-interprogram-paste-before-kill t
+   scroll-preserve-screen-position 'always
+   set-mark-command-repeat-pop t
+   show-trailing-whitespace t
+   next-line-adds-newlines nil
+   require-final-newline t
+   highlight-tabs t
+   tooltip-delay 1.5
+   truncate-lines nil
+   truncate-partial-width-windows nil
+   visible-bell t
+   ring-bell-function 'ignore)
+#+END_SRC
+
 Set indentation to 4 and default to spaces instead of tabs.
 
 #+BEGIN_SRC emacs-lisp
