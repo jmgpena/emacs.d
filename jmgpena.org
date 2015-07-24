@@ -277,6 +277,12 @@ Use rainbow delimiters to help with balancing parameters.
   (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 #+END_SRC
 
+Install lispy to handle s-expression editing in lisp like languages
+
+#+BEGIN_SRC emacs-lisp
+  (use-package lispy :ensure t)
+#+END_SRC
+
 ** Version Control
 
 Add git-gutter+ mode to highlight changes on the files while you are
@@ -300,3 +306,10 @@ Magit mode for emacs.
 #+END_SRC
 
 ** Elisp
+
+Use lispy to handle s-expression manipulation.
+https://github.com/abo-abo/lispy
+
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1)))
+#+END_SRC
