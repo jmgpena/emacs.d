@@ -136,6 +136,32 @@ buffer. Also disable the toolbar and scrollbar and other gui features.
 (load-theme 'base16-tomorrow-dark t)
 #+END_SRC
 
+* Basic Editing Configuration
+
+Set indentation to 4 and default to spaces instead of tabs.
+
+#+BEGIN_SRC emacs-lisp
+  (setq-default tab-width 4)
+  (setq-default indent-tabs-mode nil)
+#+END_SRC
+
+Change yes-or-no-p to just y-or-n-p. Having to answer y/s is enough
+safety for me.
+
+#+BEGIN_SRC emacs-lisp
+  (fset 'yes-or-no-p 'y-or-n-p)
+#+END_SRC
+
+Highlight parentesis and other delimiters.
+
+#+BEGIN_SRC emacs-lisp
+  (show-paren-mode 1)
+  (use-package rainbow-delimiters
+    :ensure t
+    :config
+    (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+#+END_SRC
+
 * Basic packages with global functionality
 ** Helm
 
