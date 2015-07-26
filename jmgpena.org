@@ -240,6 +240,17 @@ of expressions to prettify in each mode.
     (global-prettify-symbols-mode +1))
 #+END_SRC
 
+Expand region is a package that allow to expand the selection in a
+logical way depending on the context.
+https://github.com/magnars/expand-region.el
+
+#+BEGIN_SRC emacs-lisp
+  (use-package expand-region
+    :ensure t
+    :config
+    (global-set-key (kbd "C-=") 'er/expand-region))
+#+END_SRC
+
 * Basic packages with global functionality
 ** Helm
 
@@ -368,6 +379,18 @@ Default prettify symbols list for lisp modes:
     '(("lambda" . ?\λ)
       (">=" . ?≥)
       ("<=" . ?≤)))
+#+END_SRC
+
+Navigate in camel case words.
+
+#+BEGIN_SRC emacs-lisp
+  (global-subword-mode 1)
+#+END_SRC
+
+Highlight whitespace using customized font faces.
+
+#+BEGIN_SRC emacs-lisp
+
 #+END_SRC
 
 ** Version Control
