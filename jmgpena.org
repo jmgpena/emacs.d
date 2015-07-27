@@ -428,6 +428,16 @@ https://github.com/purcell/page-break-lines
     (global-page-break-lines-mode))
 #+END_SRC
 
+Highlight escape sequences:
+https://github.com/dgutov/highlight-escape-sequences
+
+#+BEGIN_SRC emacs-lisp
+  (use-package highlight-escape-sequences
+    :ensure t
+    :config
+    (hes-mode))
+#+END_SRC
+
 * Org Mode
 
 Use the latest version of org-mode.
