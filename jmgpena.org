@@ -185,6 +185,15 @@ Better mode line with nice defaults.
   (sml/setup)
   (sml/apply-theme 'light)
 #+END_SRC
+** Hydra
+
+This package helps streamline keybindings for related commands by
+using a common prefix and short binding after that.
+https://github.com/abo-abo/hydra
+
+#+BEGIN_SRC emacs-lisp
+  (use-package hydra :ensure t)
+#+END_SRC
 
 * Gui and Appearence
 ** Basic appearence
