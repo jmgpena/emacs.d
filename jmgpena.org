@@ -221,6 +221,20 @@ buffer. Also disable the toolbar and scrollbar and other gui features.
 (load-theme 'base16-tomorrow-dark t)
 #+END_SRC
 
+** Window management
+
+Use ace-window to easily move between windows and do some basic manipulations.
+https://github.com/abo-abo/ace-window
+
+#+BEGIN_SRC emacs-lisp
+  (use-package ace-window
+    :ensure t
+    :init
+    (setq aw-dispatch-always nil)
+    :config
+    (global-set-key (kbd "M-p") 'ace-window))
+#+END_SRC
+
 * Basic Editing Configuration
 
 Default settings:
