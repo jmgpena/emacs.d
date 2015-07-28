@@ -528,6 +528,16 @@ Smarter moving to beginning and end of lines. https://github.com/alezost/mwim.el
       (global-set-key (kbd "C-e") 'mwim-end-of-code-or-line)))
 #+END_SRC
 
+Uniquify buffer names
+
+#+BEGIN_SRC emacs-lisp
+  (require 'uniquify)
+  (setq uniquify-buffer-name-style 'post-forward-angle-brackets)
+  (setq uniquify-separator " • ")
+  (setq uniquify-after-kill-buffer-p t)
+  (setq uniquify-ignore-buffers-re "^\\*")
+#+END_SRC
+
 * Org Mode
 
 Use the latest version of org-mode.
