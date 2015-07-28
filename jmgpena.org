@@ -428,6 +428,13 @@ https://github.com/purcell/page-break-lines
     (global-page-break-lines-mode))
 #+END_SRC
 
+Set fill column for text mode.
+
+#+BEGIN_SRC emacs-lisp
+  (setq-default fill-column 79)
+  (add-hook 'text-mode-hook 'turn-on-auto-fill)
+#+END_SRC
+
 * Org Mode
 
 Use the latest version of org-mode.
