@@ -580,3 +580,13 @@ https://github.com/abo-abo/lispy
 #+BEGIN_SRC emacs-lisp
   (add-hook 'emacs-lisp-mode-hook (lambda () (lispy-mode 1)))
 #+END_SRC
+
+* System specific settings
+** Mac OSX
+
+Setting specific to OSW (darwin)
+
+#+BEGIN_SRC emacs-lisp
+  (when (eq system-type 'darwin)
+    (setenv "TMPDIR" "/tmp"))
+#+END_SRC
