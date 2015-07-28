@@ -135,12 +135,7 @@ buffer. Also disable the toolbar and scrollbar and other gui features.
   (setq use-file-dialog nil)
   (setq use-dialog-box nil)
   (setq indicate-empty-lines t)
-  (dolist (mode '( tool-bar-mode scroll-bar-mode))
-    (when (fboundp mode) (funcall mode -1)))
 
-  (let ((no-border '(internal-border-width . 0)))
-    (add-to-list 'default-frame-alist no-border)
-    (add-to-list 'initial-frame-alist no-border))
 #+END_SRC
 
 ** Theme
