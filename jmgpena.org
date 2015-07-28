@@ -459,6 +459,17 @@ https://github.com/kai2nenobu/guide-key
     (guide-key-mode 1))
 #+END_SRC
 
+Smarter moving to beginning and end of lines. https://github.com/alezost/mwim.el
+
+#+BEGIN_SRC emacs-lisp
+  (use-package mwim
+    :ensure t
+    :config
+    (progn
+      (global-set-key (kbd "C-a") 'mwim-beginning-of-code-or-line)
+      (global-set-key (kbd "C-e") 'mwim-end-of-code-or-line)))
+#+END_SRC
+
 * Org Mode
 
 Use the latest version of org-mode.
