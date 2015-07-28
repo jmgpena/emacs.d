@@ -169,14 +169,18 @@ Configure Helm library
   (define-key helm-command-map (kbd "g")     'helm-do-grep)
   (define-key helm-command-map (kbd "C-c w") 'helm-wikipedia-suggest)
   (define-key helm-command-map (kbd "SPC")   'helm-all-mark-rings)
+#+END_SRC
 
-  ;; helm interface to ag
-  ;(require-package 'ag)
-  ;(require-package 'helm-ag)
+Helm interface to ag
 
-  ;(setq helm-ag-base-command "ag --nocolor --nogroup --ignore-case")
-  ;(setq helm-ag-command-option "--all-text")
-  ;(setq helm-ag-insert-at-point 'symbol)
+#+BEGIN_SRC emacs-lisp
+  (use-package ag :ensure t)
+  (use-package helm-ag
+    :ensure t
+    :init
+    (setq helm-ag-base-command "ag --nocolor --nogroup --ignore-case"
+          helm-ag-command-option "--all-text"
+          helm-ag-insert-at-point 'symbol))
 #+END_SRC
 
 Also use helm-swoop (https://github.com/ShingoFukuyama/helm-swoop)
