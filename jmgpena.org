@@ -435,6 +435,30 @@ Set fill column for text mode.
   (add-hook 'text-mode-hook 'turn-on-auto-fill)
 #+END_SRC
 
+Highlight escape sequences:
+https://github.com/dgutov/highlight-escape-sequences
+
+#+BEGIN_SRC emacs-lisp
+  (use-package highlight-escape-sequences
+    :ensure t
+    :config
+    (hes-mode))
+#+END_SRC
+
+Guide key mode to help learn keybindings.
+https://github.com/kai2nenobu/guide-key
+
+#+BEGIN_SRC emacs-lisp
+  (use-package guide-key
+    :ensure t
+    :init
+    (setq guide-key/guide-key-sequence '("C-x r" "C-x 4" "C-x 5" "C-c ;" "C-c ; f" "C-c ' f" "C-x n" "C-c p" "C-x 8" "C-x v" "C-c h")
+          guide-key/recursive-key-sequence-flag t
+          guide-key/popup-window-position 'bottom)
+    :config
+    (guide-key-mode 1))
+#+END_SRC
+
 * Org Mode
 
 Use the latest version of org-mode.
