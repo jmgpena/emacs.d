@@ -127,6 +127,8 @@ with emacs).
 * Basic packages with global functionality
 ** Helm
 
+Configure Helm library
+
 #+BEGIN_SRC emacs-lisp
   (use-package helm :ensure t)
   (require 'helm-config)
@@ -176,6 +178,22 @@ with emacs).
   ;(setq helm-ag-command-option "--all-text")
   ;(setq helm-ag-insert-at-point 'symbol)
 #+END_SRC
+
+Also use helm-swoop (https://github.com/ShingoFukuyama/helm-swoop)
+
+#+BEGIN_SRC emacs-lisp
+  (use-package helm-swoop
+    :ensure t
+    :config
+    (progn
+      (global-set-key (kbd "M-i") 'helm-swoop)
+      (global-set-key (kbd "M-I") 'helm-swoop-back-to-last-point)
+      (global-set-key (kbd "C-c M-i") 'helm-multi-swoop)
+      (global-set-key (kbd "C-x M-i") 'helm-multi-swoop-all)
+      ;; in isearch, hand the word over to helm-swoop
+      (define-key isearch-mode-map (kbd "M-i") 'helm-swoop-from-isearch)))
+#+END_SRC
+
 ** Smart Mode Line
 
 Better mode line with nice defaults.
