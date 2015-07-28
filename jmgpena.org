@@ -135,7 +135,6 @@ buffer. Also disable the toolbar and scrollbar and other gui features.
   (setq use-file-dialog nil)
   (setq use-dialog-box nil)
   (setq indicate-empty-lines t)
-
 #+END_SRC
 
 ** Theme
