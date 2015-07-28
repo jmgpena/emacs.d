@@ -171,7 +171,7 @@ Configure Helm library
   (define-key helm-command-map (kbd "SPC")   'helm-all-mark-rings)
 #+END_SRC
 
-Helm interface to ag
+Helm interface to ag: https://github.com/syohex/emacs-helm-ag
 
 #+BEGIN_SRC emacs-lisp
   (use-package ag :ensure t)
