@@ -109,13 +109,15 @@ with emacs).
        (file-exists-p "~/.emacs.d/elpa/archives/melpa")
        (file-exists-p "~/.emacs.d/elpa/archives/org")
        (file-exists-p "~/.emacs.d/elpa/archives/SC")
-       (file-exists-p "~/.emacs.d/elpa/archives/marmalade"))
+       ;; (file-exists-p "~/.emacs.d/elpa/archives/marmalade")
+       )
     (package-refresh-contents))
 
   ;; bootstrap use-package
   (unless (package-installed-p 'use-package)
     (package-refresh-contents)
     (package-install 'use-package))
+  (setq use-package-always-ensure t)
   (require 'use-package)
 
   ;; paradox package list replacement
@@ -140,8 +142,8 @@ buffer. Also disable the toolbar and scrollbar and other gui features.
 ** Theme
 
 #+BEGIN_SRC emacs-lisp
-(use-package base16-theme :ensure t)
-(load-theme 'base16-tomorrow-dark t)
+  (use-package base16-theme :defer t)
+  (load-theme 'base16-tomorrow-dark t)
 #+END_SRC
 
 ** Window management
@@ -584,7 +586,7 @@ Configure ibuffer to be more friendly
 Use the latest version of org-mode.
 
 #+BEGIN_SRC emacs-lisp
-  (use-package org-plus-contrib :ensure t)
+  (use-package org-plus-contrib :defer t)
 #+END_SRC
 
 Update org to insert elisp blocks more easily. Possibly improve the
