@@ -661,6 +661,30 @@ Highlight whitespace using customized font faces.
 
 #+END_SRC
 
+** Projectile
+
+Use the excellent projectile project: http://batsov.com/projectile/
+
+We need to require 'grep for search functionality within projectile to work. It
+depends on a variable defined in grep.el
+
+#+BEGIN_SRC emacs-lisp
+  (require 'grep)
+  (use-package projectile
+    :init
+    (setq projectile-enable-caching t)
+    :config
+    (projectile-global-mode))
+#+END_SRC
+
+Integrate helm into projectile
+
+#+BEGIN_SRC emacs-lisp
+  (use-package helm-projectile
+    :config
+    (helm-projectile-on))
+#+END_SRC
+
 ** Version Control
 
 Add git-gutter+ mode to highlight changes on the files while you are
