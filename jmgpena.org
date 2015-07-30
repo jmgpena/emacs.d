@@ -731,6 +731,12 @@ http://melpa.org/#/markdown-mode
       (setq markdown-command "pandoc -f markdown -t html")))
 #+END_SRC
 
+** PHP
+
+#+BEGIN_SRC emacs-lisp
+  (use-package php-mode)
+#+END_SRC
+
 * System specific settings
 ** Mac OSX
 
