@@ -707,6 +707,27 @@ Magit mode for emacs.
   (global-set-key (kbd "C-x m") 'magit-status)
 #+END_SRC
 
+** Flycheck
+
+On the fly sintax checking for various languages:
+https://github.com/flycheck/flycheck
+
+#+BEGIN_SRC emacs-lisp
+  (use-package flycheck
+    :init
+    (add-hook 'after-init-hook
+              (lambda ()
+                (global-flycheck-mode +1)
+                (add-hook 'prog-mode-hook 'flycheck-mode)))
+    ;; Override default flycheck triggers
+    (setq flycheck-check-syntax-automatically '(save idle-change mode-enabled)
+          flycheck-idle-change-delay 0.8
+          flycheck-display-errors-function #'flycheck-display-error-messages-unless-error-list))
+
+
+
+#+END_SRC
+
 ** Elisp
 
 Use lispy to handle s-expression manipulation.
