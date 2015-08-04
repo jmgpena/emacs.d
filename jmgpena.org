@@ -126,6 +126,17 @@ with emacs).
   ;;       paradox-column-width-package 36)
 #+END_SRC
 
+** Hydra
+
+This package helps streamline keybindings for related commands by
+using a common prefix and short binding after that.
+https://github.com/abo-abo/hydra
+Moving it to be loaded early in the config so any other section can define hydras.
+
+#+BEGIN_SRC emacs-lisp
+  (use-package hydra :ensure t)
+#+END_SRC
+
 * Gui and Appearence
 ** Basic appearence
 
@@ -325,16 +336,6 @@ Better mode line with nice defaults.
   (sml/setup)
   (sml/apply-theme 'light)
 #+END_SRC
-** Hydra
-
-This package helps streamline keybindings for related commands by
-using a common prefix and short binding after that.
-https://github.com/abo-abo/hydra
-
-#+BEGIN_SRC emacs-lisp
-  (use-package hydra :ensure t)
-#+END_SRC
-
 ** Anzu
 
 Improvements on search and replace functionality using the anzu package
@@ -756,6 +757,27 @@ http://melpa.org/#/markdown-mode
 
 #+BEGIN_SRC emacs-lisp
   (use-package php-mode)
+#+END_SRC
+
+** HTML
+
+Use web-mode to edit HTML templates and JS and CSS inside HTML.
+http://web-mode.org/
+
+#+BEGIN_SRC emacs-lisp
+  (use-package web-mode
+    :init
+    (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.tpl\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.blade\\.php\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.jsp\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+    (add-to-list 'auto-mode-alist '("\\.html\\'" . web-mode))
+    (add-to-list 'auto-mode-alist
+                 '("/\\(views\\|html\\|theme\\|templates\\)/.*\\.php\\'" . web-mode)))
 #+END_SRC
 
 * System specific settings
