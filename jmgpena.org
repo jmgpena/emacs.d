@@ -656,10 +656,11 @@ Navigate in camel case words.
   (global-subword-mode 1)
 #+END_SRC
 
-Highlight whitespace using customized font faces.
+Use EditorConfig to have different whitespace and indenting conventions in
+different projects: https://github.com/editorconfig/editorconfig-emacs
 
 #+BEGIN_SRC emacs-lisp
-
+  (use-package editorconfig)
 #+END_SRC
 
 ** Projectile
