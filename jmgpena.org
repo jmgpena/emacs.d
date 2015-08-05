@@ -672,14 +672,73 @@ Configure smartparens: https://github.com/Fuco1/smartparens
     :config
     (require 'smartparens-config)
     (smartparens-global-mode t)
-    (show-smartparens-global-mode t)
-    :init
-    (define-key sp-keymap (kbd "C-M-f") 'sp-forward-sexp)
-    (define-key sp-keymap (kbd "C-M-b") 'sp-backward-sexp)
-    (define-key sp-keymap (kbd "C-M-d") 'sp-down-sexp)
-    (define-key sp-keymap (kbd "C-M-a") 'sp-backward-down-sexp)
-    (define-key sp-keymap (kbd "C-S-a") 'sp-beginning-of-sexp)
-    (define-key sp-keymap (kbd "C-S-d") 'sp-end-of-sexp))
+    (show-smartparens-global-mode t))
+
+  (defhydra hydra-learn-sp (:hint nil :columns 4)
+    "SmartParens:"
+    ;; TODO: Use () and [] - + * | <space>
+    ("B" sp-backward-sexp "backward-sexp");; similiar to VIM b
+    ("F" sp-forward-sexp "forward-sexp");; similar to VIM f
+    ;;
+    ("L" sp-backward-down-sexp "backward-down-sexp")
+    ("H" sp-backward-up-sexp "backward-up-sexp")
+    ;;
+    ("k" sp-down-sexp "down-sexp") ; root - towards the root
+    ("j" sp-up-sexp "up-sexp")
+    ;;
+    ("n" sp-next-sexp "next-sexp")
+    ("p" sp-previous-sexp "previous-sexp")
+    ;; a..z
+    ("a" sp-beginning-of-sexp "beginning-of-sexp")
+    ("z" sp-end-of-sexp "end-of-sexp")
+    ;;
+    ("t" sp-transpose-sexp "transpose-sexp")
+    ;;
+    ("x" sp-delete-char "delete-char")
+    ("dw" sp-kill-word "kill-word")
+    ;;("ds" sp-kill-symbol ) ;; Prefer kill-sexp
+    ("dd" sp-kill-sexp "kill-sexp")
+    ;;("yy" sp-copy-sexp ) ;; Don't like it. Pref visual selection
+    ;;
+    ("S" sp-unwrap-sexp "unwrap-sexp") ;; Strip!
+    ;;("wh" sp-backward-unwrap-sexp ) ;; Too similar to above
+    ;;
+    ("C-h" sp-forward-slurp-sexp "forward-slurp-sexp")
+    ("C-l" sp-forward-barf-sexp "forward-barf-sexp")
+    ("C-S-h" sp-backward-slurp-sexp "backward-slurp-sexp")
+    ("C-S-l" sp-backward-barf-sexp "backward-barf-sexp")
+    ;;
+    ;;("C-[" (bind (sp-wrap-with-pair "[")) ) ;;FIXME
+    ;;("C-(" (bind (sp-wrap-with-pair "(")) )
+    ;;
+    ("s" sp-splice-sexp )
+    ("df" sp-splice-sexp-killing-forward "splice-sexp")
+    ("db" sp-splice-sexp-killing-backward "splice-sexp-killing-forward")
+    ("da" sp-splice-sexp-killing-around "splice-sexp-killing-forward")
+    ;;
+    ("C-s" sp-select-next-thing-exchange "select-next-think-exchange")
+    ("C-p" sp-select-previous-thing "select-previous-thing")
+    ("C-n" sp-select-next-thing "select-next-thing")
+    ;;
+    ("C-f" sp-forward-symbol "forward-symbol")
+    ("C-b" sp-backward-symbol "backward-symbol")
+    ;;
+    ;;("C-t" sp-prefix-tag-object)
+    ;;("H-p" sp-prefix-pair-object)
+    ("c" sp-convolute-sexp "convolute-sexp")
+    ("g" sp-absorb-sexp "absorb-sexp")
+    ("q" sp-emit-sexp "emit-sexp")
+    ;;
+    (",b" sp-extract-before-sexp "extract-before-sexp")
+    (",a" sp-extract-after-sexp "extract-after-sexp")
+    ;;
+    ("AP" sp-add-to-previous-sexp "add-to-previous-sexp");; Difference to slurp?
+    ("AN" sp-add-to-next-sexp "add-to-next-sexp")
+    ;;
+    ("_" sp-join-sexp "join-sexp") ;;Good
+    ("|" sp-split-sexp "split-sexp"))
+
+  (bind-key "C-c s" 'hydra-learn-sp/body)
 #+END_SRC
 
 ** Projectile
