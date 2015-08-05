@@ -892,6 +892,16 @@ http://elpa.gnu.org/packages/js2-mode.html
     (js2-imenu-extras-setup))
 #+END_SRC
 
+Support for javascript refactoring:
+https://github.com/magnars/js2-refactor.el
+
+#+BEGIN_SRC emacs-lisp
+  (use-package js2-refactor
+    :init
+    (add-hook 'js2-mode-hook #'js2-refactor-mode)
+    (js2r-add-keybindings-with-prefix "C-c C-r"))
+#+END_SRC
+
 * System specific settings
 ** Mac OSX
 
