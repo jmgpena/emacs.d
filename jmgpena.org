@@ -892,6 +892,15 @@ http://elpa.gnu.org/packages/js2-mode.html
     (js2-imenu-extras-setup))
 #+END_SRC
 
+Prettify symbols:
+
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'js2-mode-hook
+            (lambda ()
+              (push '("function" . "ƒ__2") prettify-symbols-alist)))
+  (add-hook 'js2-mode-hook 'prettify-symbols-mode)
+#+END_SRC
+
 Support for javascript refactoring:
 https://github.com/magnars/js2-refactor.el
 
@@ -901,6 +910,8 @@ https://github.com/magnars/js2-refactor.el
     (add-hook 'js2-mode-hook #'js2-refactor-mode)
     (js2r-add-keybindings-with-prefix "C-c C-r"))
 #+END_SRC
+
+
 
 * System specific settings
 ** Mac OSX
