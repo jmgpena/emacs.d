@@ -667,6 +667,9 @@ different projects: https://github.com/editorconfig/editorconfig-emacs
 
 Configure smartparens: https://github.com/Fuco1/smartparens
 
+The keybinding configuration uses a hydra for now until I understand the
+commands better. The hydra is from: https://github.com/abo-abo/hydra/wiki/Smartparens
+
 #+BEGIN_SRC emacs-lisp
   (use-package smartparens
     :config
