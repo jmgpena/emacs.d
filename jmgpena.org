@@ -922,6 +922,36 @@ JSON mode: https://github.com/joshwnj/json-mode
   (use-package json-snatcher)
 #+END_SRC
 
+** Clojure / Clojurescript
+
+Clojure mode: https://github.com/clojure-emacs/clojure-mode
+
+#+BEGIN_SRC emacs-lisp
+  (use-package clojure-mode
+    :init
+    (add-hook 'clojure-mode-hook #'smartparens-strict-mode))
+#+END_SRC
+
+Clojure refactor: https://github.com/clojure-emacs/clj-refactor.el
+
+#+BEGIN_SRC emacs-lisp
+  (use-package clj-refactor
+    :init
+    (add-hook 'clojure-mode-hook
+              (lambda ()
+                (clj-refactor-mode 1)
+                (yas-minor-mode 1)
+                (cljr-add-keybindings-with-prefix "C-c C-m"))))
+#+END_SRC
+
+CIDER: https://github.com/clojure-emacs/cider
+
+#+BEGIN_SRC emacs-lisp
+  (use-package cider
+    :init
+    (add-hook 'cider-mode-hook #'eldoc-mode)
+    (add-hook 'cider-repl-mode-hook #'smartparens-strict-mode))
+#+END_SRC
 
 * System specific settings
 ** Mac OSX
