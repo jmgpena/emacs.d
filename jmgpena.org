@@ -897,12 +897,13 @@ Prettify symbols:
 #+BEGIN_SRC emacs-lisp
   (add-hook 'js2-mode-hook
             (lambda ()
-              (push '("function" . "ƒ__2") prettify-symbols-alist)))
+              (push '("function" . ?ƒ) prettify-symbols-alist)))
   (add-hook 'js2-mode-hook 'prettify-symbols-mode)
 #+END_SRC
 
 Support for javascript refactoring:
 https://github.com/magnars/js2-refactor.el
+https://github.com/gongo/json-reformat#configuration
 
 #+BEGIN_SRC emacs-lisp
   (use-package js2-refactor
@@ -911,6 +912,15 @@ https://github.com/magnars/js2-refactor.el
     (js2r-add-keybindings-with-prefix "C-c C-r"))
 #+END_SRC
 
+*** JSON
+
+JSON mode: https://github.com/joshwnj/json-mode
+
+#+BEGIN_SRC emacs-lisp
+  (use-package json-mode)
+  (use-package json-reformat)
+  (use-package json-snatcher)
+#+END_SRC
 
 
 * System specific settings
