@@ -76,50 +76,6 @@ with emacs).
 * Package Initialization
 
 #+BEGIN_SRC emacs-lisp
-  ;; use package.el from emacs
-  (require 'package)
-  (setq package-check-signature nil)
-
-  ;; Define package archives
-  (add-to-list 'package-archives
-               '("melpa" . "http://melpa.org/packages/") t)
-  (add-to-list 'package-archives
-               '("org" . "http://orgmode.org/elpa/") t)
-  (add-to-list 'package-archives
-               '("SC" . "http://joseito.republika.pl/sunrise-commander/"))
-  ;; (add-to-list 'package-archives
-  ;;             '("marmalade" . "https://marmalade-repo.org/packages/") t)
-
-  ;; If gpg cannot be found, signature checking will fail, so we
-  ;; conditionally enable it according to whether gpg is available. We
-  ;; re-run this check once $PATH has been configured
-  ;; (defun site/package-maybe-enable-signatures ()
-  ;;   "Enable package signatures if gpg is present."
-  ;;   (setq package-check-signature (when (executable-find "gpg") 'allow-unsigned)))
-
-  ;; (site/package-maybe-enable-signatures)
-  ;; (after-load 'init-exec-path
-  ;;   (site/package-maybe-enable-signatures))
-
-  ;; initialize package system
-  (package-initialize)
-
-  (unless
-      (and
-       (file-exists-p "~/.emacs.d/elpa/archives/melpa")
-       (file-exists-p "~/.emacs.d/elpa/archives/org")
-       (file-exists-p "~/.emacs.d/elpa/archives/SC")
-       ;; (file-exists-p "~/.emacs.d/elpa/archives/marmalade")
-       )
-    (package-refresh-contents))
-
-  ;; bootstrap use-package
-  (unless (package-installed-p 'use-package)
-    (package-refresh-contents)
-    (package-install 'use-package))
-  (setq use-package-always-ensure t)
-  (require 'use-package)
-
   ;; paradox package list replacement
   (use-package paradox :ensure t)
   ;; (setq paradox-github-token "08ceb37da5d8e34cfa6d2f74619d7a54fa0e1763"
@@ -583,12 +539,6 @@ Configure ibuffer to be more friendly
 #+END_SRC
 
 * Org Mode
-
-Use the latest version of org-mode.
-
-#+BEGIN_SRC emacs-lisp
-  (use-package org-plus-contrib :defer t)
-#+END_SRC
 
 Update org to insert elisp blocks more easily. Possibly improve the
 default abbreviations later...
