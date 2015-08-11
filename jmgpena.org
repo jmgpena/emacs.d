@@ -328,6 +328,15 @@ http://www.emacswiki.org/emacs/dired+.el
             (lambda () (guide-key/add-local-guide-key-sequence "%")))
 #+END_SRC
 
+** Helm-Dash
+
+Use dash docsets inside emacs. Does not need the Dash app, just uses the docsets.
+https://github.com/areina/helm-dash
+
+#+BEGIN_SRC emacs-lisp
+  (use-package helm-dash)
+#+END_SRC
+
 * Basic Editing Configuration
 
 Default settings:
