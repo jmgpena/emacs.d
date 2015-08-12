@@ -333,8 +333,15 @@ http://www.emacswiki.org/emacs/dired+.el
 Use dash docsets inside emacs. Does not need the Dash app, just uses the docsets.
 https://github.com/areina/helm-dash
 
+This packages has full functionality only for Linux, OSX and Windows can be
+made to work but there are issues.
+
+Also we can configure mode specific docsets (PHP for php buffers, etc).
+
 #+BEGIN_SRC emacs-lisp
-  (use-package helm-dash)
+  (use-package helm-dash
+    :init
+    (setq helm-dash-browser-func 'eww))
 #+END_SRC
 
 * Basic Editing Configuration
