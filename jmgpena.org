@@ -919,6 +919,14 @@ CIDER: https://github.com/clojure-emacs/cider
     (add-hook 'cider-repl-mode-hook #'smartparens-strict-mode))
 #+END_SRC
 
+** Lua
+
+Lua mode: https://github.com/immerrr/lua-mode
+
+#+BEGIN_SRC emacs-lisp
+  (use-package lua-mode)
+#+END_SRC
+
 * System specific settings
 ** Mac OSX
 
