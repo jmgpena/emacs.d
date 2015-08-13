@@ -591,6 +591,25 @@ Add my personal org files to the agenda list.
                              "~/Dropbox/org/dailylog.org")))
 #+END_SRC
 
+Setup org-capture
+
+#+BEGIN_SRC emacs-lisp
+  (define-key global-map (kbd "C-c c") 'org-capture)
+
+  (setq org-capture-templates
+        '(("t" "Todo" entry (file+headline "~/Dropbox/org/wip.org" "inbox")
+           "* TODO %?\n:PROPERTIES:\n:CREATED: %U\n:END:")
+          ;; ("d" "Data entry" table-line (file+headline "~/Dropbox/org/track.data.org" "Personal data")
+          ;;  "| %^T | %^{What} | %^{Qtd|1} | %^{Unit|-} | %^{Notes|-}" :prepend t)
+          ("j" "Journal" entry (file+datetree "~/Dropbox/org/dailylog.org")
+           "* %U :journal:\n\n%?")
+          ("n" "Note" entry (file+headline "~/Dropbox/org/wip.org" "inbox")
+           "* %? :note:\nEntered on %U\n%i\n")
+          ;; ("l" "Log Time" entry (file+datetree "~/Dropbox/org/dailylog.org")
+          ;;  "* %U - %^{Activity}  :TIME:")
+          ))
+#+END_SRC
+
 * Programming Support
 ** Common editing
 
