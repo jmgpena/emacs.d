@@ -51,6 +51,7 @@
 
 ;; initialize package system
 (package-initialize)
+(setq package-enable-at-startup nil)
 
 (unless
     (and
@@ -67,7 +68,8 @@
 (require 'use-package)
 
 ;; load latest version of org-mode
-(use-package org-plus-contrib)
+(use-package org-plus-contrib
+  :defer t)
 
 (org-babel-load-file "~/.emacs.d/jmgpena.org")
 
