@@ -953,6 +953,5 @@ Setting specific to OSW (darwin)
 
 #+BEGIN_SRC emacs-lisp
   (when (eq system-type 'darwin)
-    (setenv "TMPDIR" "/tmp")
-    (setq insert-directory-program (executable-find "gls")))
+    (setenv "TMPDIR" "/tmp"))
 #+END_SRC
