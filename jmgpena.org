@@ -344,6 +344,17 @@ Also we can configure mode specific docsets (PHP for php buffers, etc).
     (setq helm-dash-browser-func 'eww))
 #+END_SRC
 
+** Avy
+
+Use avy-goto-char for easy navigation.
+https://github.com/abo-abo/avy
+
+#+BEGIN_SRC emacs-lisp
+  (use-package avy
+    :init
+    (global-set-key (kbd "C-;") 'avy-goto-char))
+#+END_SRC
+
 * Basic Editing Configuration
 
 Default settings:
