@@ -554,6 +554,19 @@ Configure ibuffer to be more friendly
   (global-set-key (kbd "C-x C-b") 'ibuffer)
 #+END_SRC
 
+Save buffers when we focus out of emacs. Seems like a good idea so I'll try it
+for a while. It could prove very useful for web development with some kind of
+live reload tool in place. Just write code, change focus to the browser and see
+your changes.
+
+#+BEGIN_SRC emacs-lisp
+  (defun jmgpena/save-all ()
+    (interactive)
+    (save-some-buffers t))
+
+  (add-hook 'focus-out-hook 'jmgpena/save-all)
+#+END_SRC
+
 * Org Mode
 
 Update org to insert elisp blocks more easily. Possibly improve the
