@@ -970,6 +970,23 @@ Lua mode: https://github.com/immerrr/lua-mode
   (use-package lua-mode)
 #+END_SRC
 
+** Restclient
+
+Test HTTP apis and services using emacs. Allows me to create files with the
+test queries I want to make and reuse them seeing the results in an emacs
+buffer.
+https://github.com/pashky/restclient.el
+
+There is an alternative package with less features I can look to in the future:
+https://github.com/emacs-pe/http.el
+
+Htttprepl package could also be useful
+https://github.com/gregsexton/httprepl.el
+
+#+BEGIN_SRC emacs-lisp
+  (use-package restclient)
+#+END_SRC
+
 * System specific settings
 ** Mac OSX
 
