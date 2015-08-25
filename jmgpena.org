@@ -1054,3 +1054,12 @@ Setting specific to OSW (darwin)
   (when (eq system-type 'darwin)
     (setenv "TMPDIR" "/tmp"))
 #+END_SRC
+
+Get environment from shell
+
+#+BEGIN_SRC emacs-lisp
+  (use-package exec-path-from-shell
+    :config
+    (when (memq window-system '(mac ns))
+      (exec-path-from-shell-initialize)))
+#+END_SRC
